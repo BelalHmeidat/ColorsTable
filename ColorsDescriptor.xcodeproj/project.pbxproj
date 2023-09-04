@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D95DC1A2AA08FDA0008444D /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D95DC192AA08FDA0008444D /* ColorTableViewCell.swift */; };
+		1D95DC1C2AA08FE40008444D /* ColorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D95DC1B2AA08FE40008444D /* ColorTableViewCell.xib */; };
 		1DFF94DE2A96055100391FBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFF94DD2A96055100391FBE /* AppDelegate.swift */; };
 		1DFF94E02A96055100391FBE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFF94DF2A96055100391FBE /* SceneDelegate.swift */; };
 		1DFF94E52A96055100391FBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DFF94E32A96055100391FBE /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D95DC192AA08FDA0008444D /* ColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
+		1D95DC1B2AA08FE40008444D /* ColorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorTableViewCell.xib; sourceTree = "<group>"; };
 		1DFF94DA2A96055100391FBE /* ColorsDescriptor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorsDescriptor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DFF94DD2A96055100391FBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DFF94DF2A96055100391FBE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +43,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D95DC182AA08FBD0008444D /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				1D95DC192AA08FDA0008444D /* ColorTableViewCell.swift */,
+				1D95DC1B2AA08FE40008444D /* ColorTableViewCell.xib */,
+			);
+			path = TableCell;
+			sourceTree = "<group>";
+		};
 		1DFF94D12A96055100391FBE = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +71,7 @@
 		1DFF94DC2A96055100391FBE /* ColorsDescriptor */ = {
 			isa = PBXGroup;
 			children = (
+				1D95DC182AA08FBD0008444D /* TableCell */,
 				1DFF94F52A960DA700391FBE /* Delegate */,
 				1DFF94F62A960DC600391FBE /* Storyboard */,
 				1DFF94F72A960DD800391FBE /* ViewControllers */,
@@ -161,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DFF94EA2A96055100391FBE /* LaunchScreen.storyboard in Resources */,
+				1D95DC1C2AA08FE40008444D /* ColorTableViewCell.xib in Resources */,
 				1DFF94E72A96055100391FBE /* Assets.xcassets in Resources */,
 				1DFF94E52A96055100391FBE /* Main.storyboard in Resources */,
 			);
@@ -173,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D95DC1A2AA08FDA0008444D /* ColorTableViewCell.swift in Sources */,
 				1DFF94F42A96093C00391FBE /* ColorsController.swift in Sources */,
 				1DFF94DE2A96055100391FBE /* AppDelegate.swift in Sources */,
 				1DFF94F22A96068700391FBE /* ColorsViewController.swift in Sources */,
