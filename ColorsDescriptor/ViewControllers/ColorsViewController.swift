@@ -57,7 +57,7 @@ class ColorsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
 
     }
-    //seeting the number of rows
+    //setting the number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return colorElements.count //number of rows depend on the number of colors in the colors controller
    }
