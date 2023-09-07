@@ -12,7 +12,6 @@ class ColorsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet var colorDetailsView: UIView!
-    
     @IBOutlet var descriptionLb: UILabel!
     @IBOutlet var descriptionLbTitle: UILabel!
     
@@ -68,6 +67,9 @@ class ColorsViewController: UIViewController, UITableViewDelegate, UITableViewDa
        }
        let color = colorElements[indexPath.row]
        cell.setup(with: color)
+//       NSLayoutConstraint.activate([
+//           cell.widthAnchor.constraint(equalToConstant: 600)
+//       ])
        return cell
        
    }
@@ -77,7 +79,6 @@ class ColorsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         colorDetailView.backgroundColor = colorElements[indexPath.row].color
         descriptionLb.text = colorElements[indexPath.row].desc
     }
-    
     
    
     

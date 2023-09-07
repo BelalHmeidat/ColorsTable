@@ -19,7 +19,7 @@ class ColorTableViewCell: UITableViewCell {
     func setup(with color: ColorElement){
         let bgColor = color.color
         titleLabel.text = color.name
-        contentView.backgroundColor = bgColor
+        self.backgroundColor = bgColor
         titleLabel.textColor = .white
     }
     
