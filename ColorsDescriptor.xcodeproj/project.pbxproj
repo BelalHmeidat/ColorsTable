@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D95DC1A2AA08FDA0008444D /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D95DC192AA08FDA0008444D /* ColorTableViewCell.swift */; };
 		1D95DC1C2AA08FE40008444D /* ColorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D95DC1B2AA08FE40008444D /* ColorTableViewCell.xib */; };
+		1DB8C6A12AAE035400A730A2 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB8C6A02AAE035400A730A2 /* ColorManager.swift */; };
 		1DFF94DE2A96055100391FBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFF94DD2A96055100391FBE /* AppDelegate.swift */; };
 		1DFF94E02A96055100391FBE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFF94DF2A96055100391FBE /* SceneDelegate.swift */; };
 		1DFF94E52A96055100391FBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DFF94E32A96055100391FBE /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		1D95DC192AA08FDA0008444D /* ColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
 		1D95DC1B2AA08FE40008444D /* ColorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorTableViewCell.xib; sourceTree = "<group>"; };
+		1DB8C6A02AAE035400A730A2 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		1DFF94DA2A96055100391FBE /* ColorsDescriptor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorsDescriptor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DFF94DD2A96055100391FBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DFF94DF2A96055100391FBE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				1DFF94E62A96055100391FBE /* Assets.xcassets */,
 				1DFF94EB2A96055200391FBE /* Info.plist */,
 				1DFF94F82A960DE600391FBE /* Controllers */,
+				1DB8C6A02AAE035400A730A2 /* ColorManager.swift */,
 			);
 			path = ColorsDescriptor;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				1D95DC1A2AA08FDA0008444D /* ColorTableViewCell.swift in Sources */,
 				1DFF94F42A96093C00391FBE /* ColorsController.swift in Sources */,
 				1DFF94DE2A96055100391FBE /* AppDelegate.swift in Sources */,
+				1DB8C6A12AAE035400A730A2 /* ColorManager.swift in Sources */,
 				1DFF94F22A96068700391FBE /* ColorsViewController.swift in Sources */,
 				1DFF94E02A96055100391FBE /* SceneDelegate.swift in Sources */,
 			);

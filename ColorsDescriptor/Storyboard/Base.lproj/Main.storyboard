@@ -46,13 +46,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7on-3n-wfb">
                                         <rect key="frame" x="25" y="29.999999999999943" width="343" height="21"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Gv-dO-fsG">
-                                        <rect key="frame" x="25" y="75.999999999999943" width="343" height="20.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a detailed description for Deep Teal color" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Gv-dO-fsG">
+                                        <rect key="frame" x="25" y="75.999999999999943" width="343" height="40.666666666666657"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -86,30 +86,30 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="HX3-u2-kXY"/>
-                                <exclude reference="hug-GC-v5P"/>
                                 <exclude reference="HCe-fU-xaM"/>
                                 <exclude reference="NxL-rL-2Ec"/>
                                 <exclude reference="tST-0P-q5q"/>
                                 <exclude reference="v5g-5M-Db2"/>
                                 <exclude reference="vSk-df-7ez"/>
                                 <exclude reference="yde-7z-NXz"/>
+                                <exclude reference="HX3-u2-kXY"/>
+                                <exclude reference="hug-GC-v5P"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
-                                <include reference="hug-GC-v5P"/>
                                 <include reference="tST-0P-q5q"/>
                                 <include reference="v5g-5M-Db2"/>
                                 <include reference="vSk-df-7ez"/>
+                                <include reference="hug-GC-v5P"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="constraints">
-                                <include reference="HX3-u2-kXY"/>
                                 <include reference="HCe-fU-xaM"/>
                                 <include reference="NxL-rL-2Ec"/>
                                 <include reference="yde-7z-NXz"/>
+                                <include reference="HX3-u2-kXY"/>
                             </mask>
                         </variation>
                     </view>
