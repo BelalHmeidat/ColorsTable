@@ -117,7 +117,6 @@
                     <connections>
                         <outlet property="colorDetailsView" destination="bFp-gW-5Nn" id="tRA-f0-HkE"/>
                         <outlet property="descriptionLb" destination="5Gv-dO-fsG" id="Cqa-Ze-crh"/>
-                        <outlet property="descriptionLbTitle" destination="7on-3n-wfb" id="UXu-x2-hca"/>
                         <outlet property="tableView" destination="Avd-nD-HBI" id="Py7-lo-rHy"/>
                     </connections>
                 </viewController>

@@ -10,8 +10,10 @@ import UIKit
 
 //Has the color elements ordered list
 class ColorManager{
+    
     //single instance of color manager
-    static let colorManager = ColorManager()
+    static let shared = ColorManager()
+
     //ordered color element list
     private var colorElements = [
        ColorElement(color: UIColor(red: 30/255, green: 76/255, blue: 99/255.0, alpha: 1 ),
@@ -57,13 +59,6 @@ class ColorManager{
     func getColorElements() -> [ColorElement]{
         return self.colorElements
     }
-    
-    
-    
-    
-    
-    
-    
 }
 
 

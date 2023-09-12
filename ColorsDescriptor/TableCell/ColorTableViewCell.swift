@@ -14,7 +14,7 @@ class ColorTableViewCell: UITableViewCell {
     //MARK: cell content outlets
     @IBOutlet var titleLabel: UILabel!
     
-    
+    //MARK: intitilizing cell
     override func awakeFromNib() {
         super.awakeFromNib()
     }
