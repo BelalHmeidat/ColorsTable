@@ -15,10 +15,10 @@ class ColorsViewController: UIViewController {
     @IBOutlet private var descriptionLb: UILabel!
     
     //MARK: constants
-    let cellIdentifier = "ColorTableViewCell"
+    private let cellIdentifier = "ColorTableViewCell"
 
     //MARK: initilizing view
-    func setupView(){
+    private func setupView(){
         title = "Colors"
         colorDetailsView.backgroundColor = ColorManager.shared.getColorElements()[0].color
         tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
@@ -52,6 +52,4 @@ extension ColorsViewController : UITableViewDelegate, UITableViewDataSource {
         colorDetailsView.backgroundColor =  ColorManager.shared.getColorElements()[indexPath.row].color
         descriptionLb.text =  ColorManager.shared.getColorElements()[indexPath.row].description
     }
-
-
 }
