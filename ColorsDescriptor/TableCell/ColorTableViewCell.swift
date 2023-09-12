@@ -10,7 +10,6 @@ import UIKit
 
 
 class ColorTableViewCell: UITableViewCell {
-    
     //MARK: cell content outlets
     @IBOutlet var titleLabel: UILabel!
     
@@ -26,5 +25,4 @@ class ColorTableViewCell: UITableViewCell {
         self.backgroundColor = bgColor
         titleLabel.textColor = .white
     }
-    
 }

@@ -8,7 +8,6 @@
 import UIKit
 
 class ColorsViewController: UIViewController {
-    
     // MARK: - Outlets
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private var colorDetailsView: UIView!

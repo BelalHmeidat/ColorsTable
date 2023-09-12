@@ -10,7 +10,6 @@ import UIKit
 
 //Has the color elements ordered list
 class ColorManager{
-    
     //single instance of color manager
     static let shared = ColorManager()
 
