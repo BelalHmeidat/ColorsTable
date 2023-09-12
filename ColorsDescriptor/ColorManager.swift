@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-
+//Has the color elements ordered list
 class ColorManager{
-    
+    //single instance of color manager
     static let colorManager = ColorManager()
-    
+    //ordered color element list
     private var colorElements = [
        ColorElement(color: UIColor(red: 30/255, green: 76/255, blue: 99/255.0, alpha: 1 ),
                                            name: "Deep Teal",
@@ -43,14 +43,17 @@ class ColorManager{
                                            name: "Chestnut",
                                            description: "This is a detailed description for Chestnut color"),
         ]
-    //Mark: private initilizer for singleton
+    
+    //MARK: private initilizer for singleton
     private init() {
     }
     
+    //MARK: setters and getters
+    //setter for the color elements list
     func setColorElements(colors: [ColorElement]){
         self.colorElements = colors
     }
-    
+    //getter for the color elements list
     func getColorElements() -> [ColorElement]{
         return self.colorElements
     }

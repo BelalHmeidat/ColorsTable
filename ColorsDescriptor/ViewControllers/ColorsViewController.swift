@@ -9,12 +9,15 @@ import UIKit
 
 class ColorsViewController: UIViewController{
     
-    @IBOutlet weak var tableView: UITableView!
+    // MARK: - Outlets
+    @IBOutlet private weak var tableView: UITableView!
     
-    @IBOutlet var colorDetailsView: UIView!
-    @IBOutlet var descriptionLb: UILabel!
-    @IBOutlet var descriptionLbTitle: UILabel!
+    @IBOutlet private var colorDetailsView: UIView!
     
+    @IBOutlet private var descriptionLb: UILabel!
+    @IBOutlet private var descriptionLbTitle: UILabel!
+
+    //MARK: on start
     override func viewDidLoad() {
         title = "Colors"
         colorDetailsView.backgroundColor = ColorManager.colorManager.getColorElements()[0].color
@@ -23,14 +26,15 @@ class ColorsViewController: UIViewController{
     }
 }
 
+// MARK: - Table View Delegate, Data Source, and functionalites
 extension ColorsViewController : UITableViewDelegate, UITableViewDataSource{
     //setting the number of rows
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  ColorManager.colorManager.getColorElements().count //number of rows depend on the number of colors in the colors controller
    }
     
    //setting contents for each row (cell bg color and cell color name)
-   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ColorTableViewCell") as? ColorTableViewCell else{
            return UITableViewCell()
        }
@@ -39,8 +43,8 @@ extension ColorsViewController : UITableViewDelegate, UITableViewDataSource{
        return cell
    }
     
-    //when row is clicked
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //when row is clicked action
+    internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         colorDetailsView.backgroundColor =  ColorManager.colorManager.getColorElements()[indexPath.row].color
         descriptionLb.text =  ColorManager.colorManager.getColorElements()[indexPath.row].desc
     }

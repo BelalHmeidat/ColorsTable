@@ -10,12 +10,16 @@ import UIKit
 
 
 class ColorTableViewCell: UITableViewCell {
+    
+    //MARK: cell content outlets
     @IBOutlet var titleLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
+    //MARK: cell content setup
     func setup(with color: ColorElement){
         let bgColor = color.color
         titleLabel.text = color.name
