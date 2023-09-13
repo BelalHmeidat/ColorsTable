@@ -54,7 +54,7 @@ extension ColorsViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  ColorManager.shared.getColorElements().count //number of rows depend on the number of colors in the colors controller
    }
-    
+    //MARK: cell content configuration
    //setting contents for each row (cell bg color and cell color name)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? ColorTableViewCell else{
@@ -64,6 +64,9 @@ extension ColorsViewController : UITableViewDelegate, UITableViewDataSource {
        cell.setup(with: color)
        return cell
    }
+    //MARK: cell edit configuration
+    //reference: https://www.ralfebert.com/ios-examples/uikit/uitableviewcontroller/reorderable-cells/
+    
     //enabling moving cells
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         true
@@ -82,6 +85,7 @@ extension ColorsViewController : UITableViewDelegate, UITableViewDataSource {
         colorList.remove(at: sourceIndexPath.row)
         colorList.insert(holdVal, at: destinationIndexPath.row)
     }
+    //MARK: cell action configuration
     //when row is clicked
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         colorDetailsView.backgroundColor =  ColorManager.shared.getColorElements()[indexPath.row].color
