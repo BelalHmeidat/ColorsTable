@@ -113,10 +113,23 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="YUT-0R-q7l"/>
+                    <navigationItem key="navigationItem" id="YUT-0R-q7l">
+                        <centerItemGroups>
+                            <barButtonItemGroup customizationDisposition="fixed" id="yxs-Zl-rYP">
+                                <barButtonItems>
+                                    <barButtonItem title="Edit" id="zUb-ZH-iV9">
+                                        <connections>
+                                            <action selector="editButtonAction:" destination="vSb-YV-5bD" id="k2H-Gs-LsY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </barButtonItems>
+                            </barButtonItemGroup>
+                        </centerItemGroups>
+                    </navigationItem>
                     <connections>
                         <outlet property="colorDetailsView" destination="bFp-gW-5Nn" id="tRA-f0-HkE"/>
                         <outlet property="descriptionLb" destination="5Gv-dO-fsG" id="Cqa-Ze-crh"/>
+                        <outlet property="editButton" destination="zUb-ZH-iV9" id="fr2-Qd-2Zn"/>
                         <outlet property="tableView" destination="Avd-nD-HBI" id="Py7-lo-rHy"/>
                     </connections>
                 </viewController>

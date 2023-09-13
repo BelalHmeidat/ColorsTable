@@ -58,6 +58,12 @@ class ColorManager{
     func getColorElements() -> [ColorElement]{
         return self.colorElements
     }
+    
+    static func debugListOrder(){
+        for each in ColorManager.shared.colorElements{
+            print(each.name)
+        }
+    }
 }
 
 
