@@ -115,16 +115,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="YUT-0R-q7l">
                         <centerItemGroups>
-                            <barButtonItemGroup customizationDisposition="fixed" id="yxs-Zl-rYP">
-                                <barButtonItems>
-                                    <barButtonItem title="Edit" id="zUb-ZH-iV9">
-                                        <connections>
-                                            <action selector="editButtonAction:" destination="vSb-YV-5bD" id="k2H-Gs-LsY"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </barButtonItems>
-                            </barButtonItemGroup>
+                            <barButtonItemGroup customizationDisposition="fixed" id="yxs-Zl-rYP"/>
                         </centerItemGroups>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="zUb-ZH-iV9">
+                            <connections>
+                                <action selector="editButtonAction:" destination="vSb-YV-5bD" id="k2H-Gs-LsY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="colorDetailsView" destination="bFp-gW-5Nn" id="tRA-f0-HkE"/>

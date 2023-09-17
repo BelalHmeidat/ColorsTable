@@ -80,7 +80,6 @@
 				1DFF94E62A96055100391FBE /* Assets.xcassets */,
 				1DFF94EB2A96055200391FBE /* Info.plist */,
 				1DFF94F82A960DE600391FBE /* Model */,
-				1DB8C6A02AAE035400A730A2 /* ColorManager.swift */,
 			);
 			path = ColorsDescriptor;
 			sourceTree = "<group>";
@@ -114,6 +113,7 @@
 		1DFF94F82A960DE600391FBE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1DB8C6A02AAE035400A730A2 /* ColorManager.swift */,
 				1DFF94F32A96093B00391FBE /* ColorsModel.swift */,
 			);
 			path = Model;

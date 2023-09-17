@@ -24,7 +24,7 @@ class ColorsViewController: UIViewController {
     //MARK: initilizing view
     private func setupView(){
         title = "Colors"
-        colorDetailsView.backgroundColor = ColorManager.shared.getColorElements()[0].color
+        colorDetailsView.backgroundColor = UIColor(value: ColorManager.shared.getColorElements()[0].color)
         tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
     }
     
@@ -42,7 +42,7 @@ class ColorsViewController: UIViewController {
         else {
             editButton.title = "Edit"
             ColorManager.shared.setColorElements(colors: colorList)
-            ColorManager.debugListOrder()
+//            ColorManager.debugListOrder()
 
         }
     }
@@ -86,9 +86,12 @@ extension ColorsViewController : UITableViewDelegate, UITableViewDataSource {
         colorList.insert(holdVal, at: destinationIndexPath.row)
     }
     //MARK: cell action configuration
-    //when row is clicked
+    /// Action to be performed when a table cell is clicked
+    /// Sets the bottom view backgroud color to the color of the cell and shows a description of that color
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        colorDetailsView.backgroundColor =  ColorManager.shared.getColorElements()[indexPath.row].color
+        colorDetailsView.backgroundColor =  UIColor(value: ColorManager.shared.getColorElements()[indexPath.row].color)
         descriptionLb.text =  ColorManager.shared.getColorElements()[indexPath.row].description
     }
 }
+
+

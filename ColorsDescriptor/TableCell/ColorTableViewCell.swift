@@ -10,19 +10,23 @@ import UIKit
 
 
 class ColorTableViewCell: UITableViewCell {
-    //MARK: cell content outlets
+    //MARK: outlets
+    //label inside each cell
     @IBOutlet var titleLabel: UILabel!
     
-    //MARK: intitilizing cell
+    //MARK: intitilization
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    //MARK: cell content setup
+    //MARK: Functions
+    
+    /// sets up the cell's background color and the label inside depending the color element it takes as parameter
+    /// - Parameter color: ColorElement object that has color details to be displayed in the cell as label and background color
     func setup(with color: ColorElement){
-        let bgColor = color.color
+        let bgColor : Int = color.color
         titleLabel.text = color.name
-        self.backgroundColor = bgColor
+        self.backgroundColor = UIColor(value: bgColor)
         titleLabel.textColor = .white
     }
 }
