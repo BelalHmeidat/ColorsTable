@@ -14,6 +14,10 @@ class ColorTableViewCell: UITableViewCell {
     //label inside each cell
     @IBOutlet var titleLabel: UILabel!
     
+    //MARK: global vars
+    ///used to store the reorder control handle in the cell in order to change its color
+    private var myReorderImage: UIImage? = nil
+    
     //MARK: intitilization
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,5 +32,31 @@ class ColorTableViewCell: UITableViewCell {
         titleLabel.text = color.name
         self.backgroundColor = UIColor(value: bgColor)
         titleLabel.textColor = .white
+    }
+    
+    /// Changes the color of the reorder control handle to white to make it more visible
+    /// control handle is subview of type UIImageView which can be accessed by the "UITableViewCellReorderControl" description
+    /// after fetching it the image for the reorder control handle can be extracted and its tini color can be changed to desired color (white in this case)
+    /// credit: https://stackoverflow.com/a/56646864/15690748
+    // FIXME: color of the handle for a cell reverts to default after reordering that cell
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        for subViewA in self.subviews {
+            if (subViewA.classForCoder.description() == "UITableViewCellReorderControl") {
+                for subViewB in subViewA.subviews {
+                    if (subViewB.isKind(of: UIImageView.classForCoder())) {
+                        let imageView = subViewB as! UIImageView;
+                        if (self.myReorderImage == nil) {
+                            let myImage = imageView.image;
+                            myReorderImage = myImage?.withRenderingMode(.alwaysTemplate);
+                        }
+                        imageView.image = self.myReorderImage;
+                        imageView.tintColor = .white;
+                        break;
+                    }
+                }
+                break;
+            }
+        }
     }
 }
