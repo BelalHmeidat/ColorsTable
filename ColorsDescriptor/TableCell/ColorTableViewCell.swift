@@ -20,7 +20,6 @@ class ColorTableViewCell: UITableViewCell {
     }
     
     //MARK: Functions
-    
     /// sets up the cell's background color and the label inside depending the color element it takes as parameter
     /// - Parameter color: ColorElement object that has color details to be displayed in the cell as label and background color
     func setup(with color: ColorElement){

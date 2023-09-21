@@ -21,11 +21,15 @@ class ColorsViewController: UIViewController {
     //MARK: global vars
     var colorList = ColorManager.shared.getColorElements()
 
+
     //MARK: initilizing view
     private func setupView(){
         title = "Colors"
         colorDetailsView.backgroundColor = UIColor(value: ColorManager.shared.getColorElements()[0].color)
         tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+//        let toolbar = ColorsToolBar(frame: CGRect(x: 0, y: view.frame.maxY - 50, width: view.frame.width, height: 50))
+//        view.addSubview(toolbar)
+        
     }
     
     override func viewDidLoad() {
@@ -42,8 +46,6 @@ class ColorsViewController: UIViewController {
         else {
             editButton.title = "Edit"
             ColorManager.shared.setColorElements(colors: colorList)
-//            ColorManager.debugListOrder()
-
         }
     }
 }
@@ -54,6 +56,7 @@ extension ColorsViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  ColorManager.shared.getColorElements().count //number of rows depend on the number of colors in the colors controller
    }
+    
     //MARK: cell content configuration
    //setting contents for each row (cell bg color and cell color name)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,20 +66,22 @@ extension ColorsViewController : UITableViewDelegate, UITableViewDataSource {
        let color =  ColorManager.shared.getColorElements()[indexPath.row]
        cell.setup(with: color)
        return cell
+        
    }
     //MARK: cell edit configuration
-    //reference: https://www.ralfebert.com/ios-examples/uikit/uitableviewcontroller/reorderable-cells/
-    
-    //enabling moving cells
+    ///reference: https://www.ralfebert.com/ios-examples/uikit/uitableviewcontroller/reorderable-cells/
+    ///enabling moving cells
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         true
     }
+    
     //reflecting changes to the list of color elements
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let holdVal = colorList[sourceIndexPath.row]
         colorList.remove(at: sourceIndexPath.row)
         colorList.insert(holdVal, at: destinationIndexPath.row)
     }
+    
     //MARK: cell action configuration
     /// Action to be performed when a table cell is clicked
     /// Sets the bottom view backgroud color to the color of the cell and shows a description of that color

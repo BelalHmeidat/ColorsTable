@@ -9,8 +9,23 @@ import UIKit
 
 class AddColorViewController: UIViewController {
 
+    //MARK: Outlets
+    @IBOutlet weak var colorTitleTextField: UITextField!
+    @IBOutlet weak var colorDescTextView: UITextView!
+    
+    //MARK: Function
+    fileprivate func setupBorders() {
+        colorDescTextView.layer.borderColor = UIColor.lightGray.cgColor
+        colorDescTextView.layer.borderWidth = 1
+        colorDescTextView.layer.cornerRadius = 10
+        colorTitleTextField.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
+    //MARK: Initilization
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBorders()
+        
 
         // Do any additional setup after loading the view.
     }
