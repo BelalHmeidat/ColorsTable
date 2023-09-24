@@ -7,11 +7,12 @@
 
 import UIKit
 
-class AddColorViewController: UIViewController {
+class AddColorViewController: UIViewController, UIColorPickerViewControllerDelegate {
 
     //MARK: Outlets
     @IBOutlet weak var colorTitleTextField: UITextField!
     @IBOutlet weak var colorDescTextView: UITextView!
+    @IBOutlet weak var addColorButton: UIButton!
     
     //MARK: Function
     fileprivate func setupBorders() {
@@ -30,15 +31,14 @@ class AddColorViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func colorButtonPressed(_ sender: UIButton) {
+        let colorPickerViewController = UIColorPickerViewController()
+        colorPickerViewController.delegate = self
+        colorPickerViewController.supportsAlpha = false //can
+        present(colorPickerViewController, animated: true)
     }
-    */
-
+    
+    func colorPickerViewController(_ viewController: UIColorPickerViewController, didSelect color: UIColor, continuously: Bool) {
+        addColorButton.tintColor = color
+    }
 }

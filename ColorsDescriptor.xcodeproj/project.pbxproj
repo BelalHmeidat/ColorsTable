@@ -117,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				1DFF94E32A96055100391FBE /* Main.storyboard */,
-				1DA484C22ABC67A300A224E5 /* ColorSelectorViewController.swift */,
 				1DFF94E82A96055100391FBE /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
@@ -126,6 +125,7 @@
 		1DFF94F72A960DD800391FBE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1DA484C22ABC67A300A224E5 /* ColorSelectorViewController.swift */,
 				1DFF94F12A96068700391FBE /* ColorsViewController.swift */,
 				1D4F1E4F2ABC37CF008F3FD2 /* AddColorViewController.swift */,
 			);

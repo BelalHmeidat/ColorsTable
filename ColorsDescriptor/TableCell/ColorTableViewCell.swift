@@ -16,7 +16,7 @@ class ColorTableViewCell: UITableViewCell {
     
     //MARK: global vars
     ///used to store the reorder control handle in the cell in order to change its color
-    private var myReorderImage: UIImage? = nil
+//    private var myReorderImage: UIImage? = nil
     
     //MARK: intitilization
     override func awakeFromNib() {
@@ -45,12 +45,9 @@ class ColorTableViewCell: UITableViewCell {
                 for subViewB in subViewA.subviews {
                     if (subViewB.isKind(of: UIImageView.classForCoder())) {
                         let imageView = subViewB as! UIImageView;
-                        if (self.myReorderImage == nil) {
-                            let myImage = imageView.image;
-                            myReorderImage = myImage?.withRenderingMode(.alwaysTemplate);
-                        }
-                        imageView.image = self.myReorderImage;
-                        imageView.tintColor = .white;
+                        let myImage = imageView.image;
+                        imageView.image = myImage?.withRenderingMode(.alwaysTemplate);
+                        imageView.tintColor = .white
                         break;
                     }
                 }

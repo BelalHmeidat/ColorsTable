@@ -13,8 +13,9 @@ class ColorsViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private var colorDetailsView: UIView!
     @IBOutlet private var descriptionLb: UILabel!
+    @IBOutlet weak var toolbar: UIToolbar!
+  
     
-   
     //MARK: constants
     private let cellIdentifier = "ColorTableViewCell"
     
@@ -29,7 +30,7 @@ class ColorsViewController: UIViewController {
         tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
 //        let toolbar = ColorsToolBar(frame: CGRect(x: 0, y: view.frame.maxY - 50, width: view.frame.width, height: 50))
 //        view.addSubview(toolbar)
-        
+        toolbar.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -39,7 +40,8 @@ class ColorsViewController: UIViewController {
     
     //MARK: Button Actions
     @IBAction func editButtonAction(_ sender: UIBarButtonItem) {
-        tableView.isEditing = !tableView.isEditing
+        tableView.isEditing.toggle()
+        toolbar.isHidden.toggle()
         if (tableView.isEditing == true){
             editButton.title = "Done"
         }
@@ -47,6 +49,10 @@ class ColorsViewController: UIViewController {
             editButton.title = "Edit"
             ColorManager.shared.setColorElements(colors: colorList)
         }
+    }
+    @IBAction func deleteButtonAction(_ sender: UIBarItem) {
+            colorList.remove(at: tableView.indexPathForSelectedRow?.row ?? 0)
+        
     }
 }
 
@@ -75,12 +81,21 @@ extension ColorsViewController : UITableViewDelegate, UITableViewDataSource {
         true
     }
     
-    //reflecting changes to the list of color elements
+    //reflecting changes to the list of color elements as a result of moving cells
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let holdVal = colorList[sourceIndexPath.row]
         colorList.remove(at: sourceIndexPath.row)
         colorList.insert(holdVal, at: destinationIndexPath.row)
     }
+    //MARK: Handle Selection
+//    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+//        <#code#>
+//    }
+    
+//    func fetchObject() -> ColorElement {
+//        var selectedIndex : Int = tableView.indexPathForSelectedRow?.row ?? 0
+//        return colorList[selectedIndex]
+//    }
     
     //MARK: cell action configuration
     /// Action to be performed when a table cell is clicked
