@@ -108,7 +108,7 @@ extension ColorsViewController : UITableViewDelegate, UITableViewDataSource {
         for (index, color) in ColorManager.shared.colorElements.enumerated() {
             print("\(index) \(color.name), \(color.markedForDeletion)")
         }
-//        tableView.reloadData()
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
