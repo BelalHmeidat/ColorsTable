@@ -14,45 +14,63 @@ class ColorsViewController: UIViewController {
     @IBOutlet private var colorDetailsView: UIView!
     @IBOutlet private var descriptionLb: UILabel!
     @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var trashColorButton: UIBarButtonItem!
+    
+    static var globalTableView : ColorsViewController?
   
     
     //MARK: constants
     private let cellIdentifier = "ColorTableViewCell"
     
-    //MARK: global vars
-    var colorList = ColorManager.shared.getColorElements()
-
 
     //MARK: initilizing view
     private func setupView(){
         title = "Colors"
-        colorDetailsView.backgroundColor = UIColor(value: ColorManager.shared.getColorElements()[0].color)
+        colorDetailsView.backgroundColor = ColorManager.shared.defaultColor
         tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
 //        let toolbar = ColorsToolBar(frame: CGRect(x: 0, y: view.frame.maxY - 50, width: view.frame.width, height: 50))
 //        view.addSubview(toolbar)
         toolbar.isHidden = true
+        trashColorButton.isEnabled = false
     }
     
     override func viewDidLoad() {
+        ColorsViewController.globalTableView = self
         setupView()
         super.viewDidLoad()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "AddColorSegue" {
+            if tableView.indexPathForSelectedRow != nil {
+               let detailVC = segue.destination as! AddColorViewController
+               detailVC.delegate = self // Set the delegate to the table view controller
+           }
+        }
     }
     
     //MARK: Button Actions
     @IBAction func editButtonAction(_ sender: UIBarButtonItem) {
         tableView.isEditing.toggle()
         toolbar.isHidden.toggle()
+//        ColorTableViewCell.editingEnabled.toggle()
         if (tableView.isEditing == true){
             editButton.title = "Done"
         }
         else {
             editButton.title = "Edit"
-            ColorManager.shared.setColorElements(colors: colorList)
         }
+        ColorManager.shared.resetSelectedColors()
+        tableView.reloadData()
     }
     @IBAction func deleteButtonAction(_ sender: UIBarItem) {
-            colorList.remove(at: tableView.indexPathForSelectedRow?.row ?? 0)
-        
+        ColorManager.shared.deleteSelectedColors()
+        tableView.reloadData()
+    }
+    
+    //MARK: functions
+    func updateTrashButtonState(){
+        trashColorButton.isEnabled = ColorManager.shared.checkDelete()
     }
 }
 
@@ -60,7 +78,8 @@ class ColorsViewController: UIViewController {
 extension ColorsViewController : UITableViewDelegate, UITableViewDataSource {
     //setting the number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  ColorManager.shared.getColorElements().count //number of rows depend on the number of colors in the colors controller
+        return  ColorManager.shared.getColorElements().count
+       //number of rows depend on the number of colors in the colors controller
    }
     
     //MARK: cell content configuration
@@ -69,8 +88,8 @@ extension ColorsViewController : UITableViewDelegate, UITableViewDataSource {
        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? ColorTableViewCell else{
            return UITableViewCell()
        }
-       let color =  ColorManager.shared.getColorElements()[indexPath.row]
-       cell.setup(with: color)
+        let color =  ColorManager.shared.getColorElements()[indexPath.row]
+        cell.setup(with: color, index:indexPath.row, editing: self.tableView.isEditing)
        return cell
         
    }
@@ -83,19 +102,22 @@ extension ColorsViewController : UITableViewDelegate, UITableViewDataSource {
     
     //reflecting changes to the list of color elements as a result of moving cells
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let holdVal = colorList[sourceIndexPath.row]
-        colorList.remove(at: sourceIndexPath.row)
-        colorList.insert(holdVal, at: destinationIndexPath.row)
+        let holdVal = ColorManager.shared.colorElements[sourceIndexPath.row]
+        ColorManager.shared.colorElements.remove(at: sourceIndexPath.row)
+        ColorManager.shared.colorElements.insert(holdVal, at: destinationIndexPath.row)
+        for (index, color) in ColorManager.shared.colorElements.enumerated() {
+            print("\(index) \(color.name), \(color.markedForDeletion)")
+        }
+//        tableView.reloadData()
     }
-    //MARK: Handle Selection
-//    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-//        <#code#>
-//    }
     
-//    func fetchObject() -> ColorElement {
-//        var selectedIndex : Int = tableView.indexPathForSelectedRow?.row ?? 0
-//        return colorList[selectedIndex]
-//    }
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
     
     //MARK: cell action configuration
     /// Action to be performed when a table cell is clicked
@@ -106,4 +128,10 @@ extension ColorsViewController : UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+
+extension ColorsViewController : AddColorViewControllerDelegate {
+    func actionRequiresReloadPerformed() {
+        tableView.reloadData()
+    }
+}
 

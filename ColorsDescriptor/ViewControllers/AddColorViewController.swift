@@ -7,12 +7,24 @@
 
 import UIKit
 
+protocol AddColorViewControllerDelegate : AnyObject {
+    func actionRequiresReloadPerformed()
+}
+
 class AddColorViewController: UIViewController, UIColorPickerViewControllerDelegate {
 
     //MARK: Outlets
     @IBOutlet weak var colorTitleTextField: UITextField!
     @IBOutlet weak var colorDescTextView: UITextView!
-    @IBOutlet weak var addColorButton: UIButton!
+    @IBOutlet weak var chooseColorBt: UIButton!
+    
+    //MARK: Global
+    var selectedColor : UIColor?
+    var colorTitle : String?
+    var colorDesc : String?
+    
+    //MARK: Delegate
+    weak var delegate : (AddColorViewControllerDelegate)?
     
     //MARK: Function
     fileprivate func setupBorders() {
@@ -31,6 +43,35 @@ class AddColorViewController: UIViewController, UIColorPickerViewControllerDeleg
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func addColorPressed(_ sender: UIButton) {
+        colorTitle = colorTitleTextField.text!
+        colorDesc = colorDescTextView.text!
+        let newColorElement = ColorElement(color: selectedColor ?? chooseColorBt.tintColor, name: colorTitle!, description: colorDesc!)
+        if Validator().isColorTitleValid(colorTitle!) != nil {
+            let alert = UIAlertController(title: "Error", message: Validator().isColorTitleValid(colorTitle!), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert,animated: true)
+            return
+        }
+        else if Validator().isColorElementValid(newColorElement) != nil{
+            let alert = UIAlertController(title: "Error", message: Validator().isColorElementValid(newColorElement), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert,animated: true)
+            return
+        }
+        else if Validator().isColorTitleValid(colorDesc!) != nil {
+            let alert = UIAlertController(title: "Error", message: Validator().isColorDescriptionValid(colorDesc!), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert,animated: true)
+            return
+        }
+
+        ColorManager.shared.colorElements.append(newColorElement)
+        ColorManager.shared.setColorElements()
+        self.dismiss(animated: true, completion: nil) //closing view controller
+        delegate?.actionRequiresReloadPerformed()
+    }
+    
     @IBAction func colorButtonPressed(_ sender: UIButton) {
         let colorPickerViewController = UIColorPickerViewController()
         colorPickerViewController.delegate = self
@@ -38,7 +79,13 @@ class AddColorViewController: UIViewController, UIColorPickerViewControllerDeleg
         present(colorPickerViewController, animated: true)
     }
     
+    
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func colorPickerViewController(_ viewController: UIColorPickerViewController, didSelect color: UIColor, continuously: Bool) {
-        addColorButton.tintColor = color
+        selectedColor = color
+        chooseColorBt.tintColor = selectedColor
     }
 }

@@ -18,37 +18,48 @@ class ColorManager{
     let colorElementsKey = "storedColorElements"
     let defaults = UserDefaults.standard
 
+    //MARK: vars
+//    var selectedColors :IndexSet = []
+    var defaultColor : UIColor = .white
+
     //MARK: temp
     //ordered color element list
-    private var colorElements = [
+    var colorElements = [
        ColorElement(color: 0x1E4C63,
                     name: "Deep Teal",
-                    description: "TThis is a detailed description for Deap Teal color"),
+                    description: "TThis is a detailed description for Deap Teal color"
+                    ),
             
         ColorElement(color: 0x102D76,
                      name: "Catalina Blue",
-                     description: "This is a detailed description for Catalina Blue color"),
+                     description: "This is a detailed description for Catalina Blue color"
+                     ),
             
         ColorElement(color: 0x180B4F,
                       name: "Dark Indingo",
-                      description: "This is a detailed description for Dark Indingo color"),
+                      description: "This is a detailed description for Dark Indingo color"
+                     ),
 
         
         ColorElement(color: 0x3F1156,
                      name: "Ripe Plum",
-                     description: "This is a detailed description for Ripe Plum color"),
+                     description: "This is a detailed description for Ripe Plum color"
+                     ),
 
         ColorElement(color: 0x4E172A,
                    name: "Mulberry Wood",
-                   description: "This is a detailed description for Mulberry Wood color"),
+                   description: "This is a detailed description for Mulberry Wood color"
+                    ),
 
        ColorElement(color: 0x781F0E,
                     name: "Kenyan Copper",
-                   description: "This is a detailed description for Kenyan Copper color"),
+                   description: "This is a detailed description for Kenyan Copper color"
+                   ),
 
         ColorElement(color:  0x733010,
                    name: "Chestnut",
-                   description: "This is a detailed description for Chestnut color"),
+                   description: "This is a detailed description for Chestnut color"
+                    ),
         ]
     
     //MARK: Intilizer
@@ -57,15 +68,18 @@ class ColorManager{
     private init() {
         if let colorListData = UserDefaults.standard.data(forKey: colorElementsKey),
            let storedColorList = try? JSONDecoder().decode([ColorElement].self, from: colorListData) {
-            colorElements = storedColorList
+                colorElements = storedColorList
             }
+        if colorElements.count != 0{
+            defaultColor = UIColor(value: colorElements[0].color)
+        }
     }
     
     //MARK: setters and getter
     /// setter for color elements list
     /// - Parameter colors: color list to be set for viewing the app
-    func setColorElements(colors: [ColorElement]){
-        colorElements = colors
+    func setColorElements(){
+//        colorElements = colors
         saveColorList()
     }
     /// getter for the color elements list
@@ -80,6 +94,31 @@ class ColorManager{
         if let encodedColorList = try? JSONEncoder().encode(colorElements) {
             UserDefaults.standard.set(encodedColorList, forKey: colorElementsKey)
         }
+    }
+    
+    func resetSelectedColors() {
+        for color in colorElements {
+            color.markedForDeletion = false
+        }
+    }
+    
+    func deleteSelectedColors(){
+        for color in colorElements {
+            if color.markedForDeletion {
+                colorElements.remove(at: colorElements.firstIndex(of: color)!)
+            }
+        }
+        resetSelectedColors()
+        setColorElements()
+    }
+    
+    func checkDelete() -> Bool{
+        for color in colorElements {
+            if color.markedForDeletion {
+                return true
+            }
+        }
+        return false
     }
 }
 

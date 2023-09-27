@@ -6,13 +6,19 @@
 //
 
 import UIKit
-// struct to contain colors and their descriptions
-struct ColorElement: Codable {
+/// class to contain colors and their descriptions
+///has to be class because index will be updated by refernce
+class ColorElement: Codable, Equatable {
+    static func == (lhs: ColorElement, rhs: ColorElement) -> Bool {
+        return lhs.name == rhs.name && lhs.color == rhs.color && lhs.description == rhs.description
+    }
+    
     
     //MARK: Properties
     private(set) var color: Int
     private(set) var name : String
     private(set) var description : String
+    var markedForDeletion : Bool = false
     
     //MARK: Constructor
     init(color: Int, name: String, description: String) {
@@ -21,7 +27,7 @@ struct ColorElement: Codable {
         self.description = description
     }
     
-    init(color: UIColor, name: String, description : String){
+    convenience init(color: UIColor, name: String, description : String){
         // To get the RGBA components of the color
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0

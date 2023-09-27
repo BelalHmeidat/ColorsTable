@@ -13,10 +13,16 @@ class ColorTableViewCell: UITableViewCell {
     //MARK: outlets
     //label inside each cell
     @IBOutlet var titleLabel: UILabel!
+    @IBOutlet weak var checkboxButton: UIButton!
+    
+    //MARK: static
+    static var selectedColorsIndecies : [Int] = []
+
     
     //MARK: global vars
-    ///used to store the reorder control handle in the cell in order to change its color
-//    private var myReorderImage: UIImage? = nil
+    var colorIndex : Int = -1
+    static let tableView = ColorsViewController.globalTableView
+    
     
     //MARK: intitilization
     override func awakeFromNib() {
@@ -26,11 +32,41 @@ class ColorTableViewCell: UITableViewCell {
     //MARK: Functions
     /// sets up the cell's background color and the label inside depending the color element it takes as parameter
     /// - Parameter color: ColorElement object that has color details to be displayed in the cell as label and background color
-    func setup(with color: ColorElement){
+    func setup(with color: ColorElement, index: Int, editing: Bool){
+//        self.setEditing(editing, animated: true)
         let bgColor : Int = color.color
         titleLabel.text = color.name
         self.backgroundColor = UIColor(value: bgColor)
         titleLabel.textColor = .white
+        colorIndex = index
+        checkboxButton.isHidden = false
+        if !editing {
+            checkboxButton.isHidden = true
+        }
+        // checking if the cell is checked here is neccessary becuase of the dequeable property of the cell
+        else if ColorManager.shared.colorElements[colorIndex].markedForDeletion {
+            checkboxButton.setImage(UIImage(named: "CheckedBox"), for: .normal)
+        }
+        else {
+            checkboxButton.setImage(UIImage(named: "emptyCheckBox"), for: .normal)
+        }
+        
+//        print("\(colorIndex) \(titleLabel.text) \(isChecked)")
+    }
+                                          
+    @IBAction func checkboxButtonTapped(_ sender: UIButton) {
+          if ColorManager.shared.colorElements[colorIndex].markedForDeletion {
+              checkboxButton.setImage(UIImage(named: "emptyCheckBox"), for: .normal)
+          }
+          else{
+              checkboxButton.setImage(UIImage(named: "CheckedBox"), for: .normal)
+          }
+        ColorManager.shared.colorElements[colorIndex].markedForDeletion.toggle()
+        ColorTableViewCell.tableView?.updateTrashButtonState()
+        print("\(colorIndex) \(ColorManager.shared.colorElements[colorIndex].name)")
+        for color in ColorManager.shared.colorElements{
+            print(color.name, color.markedForDeletion)
+        }
     }
     
     /// Changes the color of the reorder control handle to white to make it more visible
