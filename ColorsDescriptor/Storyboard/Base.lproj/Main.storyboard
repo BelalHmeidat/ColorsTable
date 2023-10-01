@@ -33,7 +33,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Avd-nD-HBI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Avd-nD-HBI">
                                 <rect key="frame" x="0.0" y="155.00000000000003" width="393" height="340.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
@@ -56,54 +56,39 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NQ8-4A-dHq" customClass="ColorsToolBar" customModule="ColorsDescriptor" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="207" width="393" height="149.33333333333326"/>
-                                        <subviews>
-                                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C7c-sm-rra">
-                                                <rect key="frame" x="0.0" y="100" width="393" height="49"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="z7f-8L-Lz7"/>
-                                                </constraints>
-                                                <items>
-                                                    <barButtonItem systemItem="trash" id="Oee-u4-g3F">
-                                                        <color key="tintColor" systemColor="systemRedColor"/>
-                                                        <connections>
-                                                            <action selector="deleteButtonAction:" destination="vSb-YV-5bD" id="fWp-Z4-wmN"/>
-                                                        </connections>
-                                                    </barButtonItem>
-                                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="RGJ-Ch-bBE"/>
-                                                    <barButtonItem systemItem="add" id="FXC-4w-LDK" userLabel="Add Button">
-                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <connections>
-                                                            <segue destination="5bL-Ik-wJo" kind="presentation" identifier="AddColorSegue" modalPresentationStyle="fullScreen" id="rXS-AQ-ZPK"/>
-                                                        </connections>
-                                                    </barButtonItem>
-                                                </items>
-                                            </toolbar>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="C7c-sm-rra" secondAttribute="trailing" id="k4Y-L3-D72"/>
-                                            <constraint firstItem="C7c-sm-rra" firstAttribute="leading" secondItem="NQ8-4A-dHq" secondAttribute="leading" id="nu3-ag-ZXZ"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="5Gv-dO-fsG" firstAttribute="leading" secondItem="bFp-gW-5Nn" secondAttribute="leading" constant="25" id="4Z9-f5-y4I"/>
-                                    <constraint firstAttribute="bottom" secondItem="NQ8-4A-dHq" secondAttribute="bottom" id="C7O-6x-Je3"/>
-                                    <constraint firstItem="NQ8-4A-dHq" firstAttribute="width" secondItem="bFp-gW-5Nn" secondAttribute="width" id="Fux-Pr-JhR"/>
-                                    <constraint firstAttribute="bottom" secondItem="C7c-sm-rra" secondAttribute="bottom" id="Lzt-7a-MVm"/>
                                     <constraint firstItem="5Gv-dO-fsG" firstAttribute="top" secondItem="7on-3n-wfb" secondAttribute="bottom" constant="25" id="Njx-q5-1j6"/>
                                     <constraint firstAttribute="trailing" secondItem="7on-3n-wfb" secondAttribute="trailing" constant="25" id="Nnh-UP-iCD"/>
-                                    <constraint firstItem="NQ8-4A-dHq" firstAttribute="leading" secondItem="bFp-gW-5Nn" secondAttribute="leading" id="SPF-ea-Orp"/>
                                     <constraint firstAttribute="trailing" secondItem="5Gv-dO-fsG" secondAttribute="trailing" constant="25" id="jbc-Ma-ZDc"/>
                                     <constraint firstItem="7on-3n-wfb" firstAttribute="leading" secondItem="bFp-gW-5Nn" secondAttribute="leading" constant="25" id="lX2-eR-kHu"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5Gv-dO-fsG" secondAttribute="bottom" constant="25" id="vXi-uK-Kh6"/>
-                                    <constraint firstAttribute="trailing" secondItem="NQ8-4A-dHq" secondAttribute="trailing" id="whE-3e-JcA"/>
                                     <constraint firstItem="7on-3n-wfb" firstAttribute="top" secondItem="bFp-gW-5Nn" secondAttribute="top" constant="30" id="xST-Xh-fJM"/>
                                 </constraints>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C7c-sm-rra">
+                                <rect key="frame" x="0.0" y="768" width="393" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="z7f-8L-Lz7"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="trash" id="Oee-u4-g3F">
+                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                        <connections>
+                                            <action selector="deleteButtonAction:" destination="vSb-YV-5bD" id="fWp-Z4-wmN"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="RGJ-Ch-bBE"/>
+                                    <barButtonItem systemItem="add" id="FXC-4w-LDK" userLabel="Add Button">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <segue destination="5bL-Ik-wJo" kind="presentation" identifier="AddColorSegue" modalPresentationStyle="fullScreen" id="rXS-AQ-ZPK"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ndb-Bt-mzU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -111,9 +96,13 @@
                             <constraint firstAttribute="bottom" secondItem="bFp-gW-5Nn" secondAttribute="bottom" id="9vE-FQ-7Pn"/>
                             <constraint firstAttribute="trailing" secondItem="Avd-nD-HBI" secondAttribute="trailing" id="HCe-fU-xaM"/>
                             <constraint firstItem="bFp-gW-5Nn" firstAttribute="leading" secondItem="ssS-QL-Oc0" secondAttribute="leading" id="HX3-u2-kXY"/>
+                            <constraint firstItem="Ndb-Bt-mzU" firstAttribute="trailing" secondItem="bFp-gW-5Nn" secondAttribute="trailing" id="JuH-58-3za"/>
+                            <constraint firstItem="C7c-sm-rra" firstAttribute="trailing" secondItem="Ndb-Bt-mzU" secondAttribute="trailing" id="LbM-zw-SZH"/>
                             <constraint firstItem="Avd-nD-HBI" firstAttribute="height" secondItem="ssS-QL-Oc0" secondAttribute="height" multiplier="0.4" id="NxL-rL-2Ec"/>
                             <constraint firstItem="Ndb-Bt-mzU" firstAttribute="top" secondItem="Avd-nD-HBI" secondAttribute="top" id="Pnq-Jg-dQs"/>
+                            <constraint firstItem="Ndb-Bt-mzU" firstAttribute="bottom" secondItem="C7c-sm-rra" secondAttribute="bottom" id="emN-Gf-UEV"/>
                             <constraint firstAttribute="trailing" secondItem="bFp-gW-5Nn" secondAttribute="trailing" id="epe-Ga-iaf"/>
+                            <constraint firstItem="C7c-sm-rra" firstAttribute="leading" secondItem="Ndb-Bt-mzU" secondAttribute="leading" id="g5L-qM-Goh"/>
                             <constraint firstItem="bFp-gW-5Nn" firstAttribute="top" secondItem="Ndb-Bt-mzU" secondAttribute="top" id="hug-GC-v5P"/>
                             <constraint firstItem="Avd-nD-HBI" firstAttribute="width" secondItem="ssS-QL-Oc0" secondAttribute="width" multiplier="0.3" id="tST-0P-q5q"/>
                             <constraint firstItem="Avd-nD-HBI" firstAttribute="bottom" secondItem="ssS-QL-Oc0" secondAttribute="bottom" id="v5g-5M-Db2"/>
@@ -165,7 +154,7 @@
                         <outlet property="descriptionLb" destination="5Gv-dO-fsG" id="Cqa-Ze-crh"/>
                         <outlet property="editButton" destination="zUb-ZH-iV9" id="fr2-Qd-2Zn"/>
                         <outlet property="tableView" destination="Avd-nD-HBI" id="Py7-lo-rHy"/>
-                        <outlet property="toolbar" destination="NQ8-4A-dHq" id="kJU-xy-X39"/>
+                        <outlet property="toolbar" destination="C7c-sm-rra" id="x1z-yq-pFc"/>
                         <outlet property="trashColorButton" destination="Oee-u4-g3F" id="ErJ-Ur-1fp"/>
                     </connections>
                 </viewController>
@@ -307,7 +296,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

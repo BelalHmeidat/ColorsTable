@@ -42,10 +42,8 @@ class ColorsViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "AddColorSegue" {
-            if tableView.indexPathForSelectedRow != nil {
-               let detailVC = segue.destination as! AddColorViewController
-               detailVC.delegate = self // Set the delegate to the table view controller
-           }
+           let detailVC = segue.destination as! AddColorViewController
+           detailVC.delegate = self // Set the delegate to the table view controller
         }
     }
     

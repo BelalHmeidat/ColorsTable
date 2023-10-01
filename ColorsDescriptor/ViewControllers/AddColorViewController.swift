@@ -68,8 +68,8 @@ class AddColorViewController: UIViewController, UIColorPickerViewControllerDeleg
 
         ColorManager.shared.colorElements.append(newColorElement)
         ColorManager.shared.setColorElements()
-        self.dismiss(animated: true, completion: nil) //closing view controller
-        delegate?.actionRequiresReloadPerformed()
+        self.dismiss(animated: true, completion: {self.delegate?.actionRequiresReloadPerformed()}) //closing view controller
+//        delegate?.actionRequiresReloadPerformed()
     }
     
     @IBAction func colorButtonPressed(_ sender: UIButton) {

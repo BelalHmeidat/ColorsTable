@@ -79,7 +79,6 @@ class ColorManager{
     /// setter for color elements list
     /// - Parameter colors: color list to be set for viewing the app
     func setColorElements(){
-//        colorElements = colors
         saveColorList()
     }
     /// getter for the color elements list

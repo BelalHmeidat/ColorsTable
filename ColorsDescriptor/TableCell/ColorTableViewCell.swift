@@ -15,6 +15,10 @@ class ColorTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet weak var checkboxButton: UIButton!
     
+    static let checkedImage : UIImage = UIImage(systemName: "checkmark.circle.fill")!.withTintColor(.gray, renderingMode: .alwaysOriginal)
+    static let uncheckedImage : UIImage = UIImage(systemName: "circle")!.withTintColor(.gray, renderingMode: .alwaysOriginal)
+    
+    
     //MARK: static
     static var selectedColorsIndecies : [Int] = []
 
@@ -45,10 +49,11 @@ class ColorTableViewCell: UITableViewCell {
         }
         // checking if the cell is checked here is neccessary becuase of the dequeable property of the cell
         else if ColorManager.shared.colorElements[colorIndex].markedForDeletion {
-            checkboxButton.setImage(UIImage(named: "CheckedBox"), for: .normal)
+//            checkboxButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+            checkboxButton.setImage(ColorTableViewCell.checkedImage, for: .normal)
         }
         else {
-            checkboxButton.setImage(UIImage(named: "emptyCheckBox"), for: .normal)
+            checkboxButton.setImage(ColorTableViewCell.uncheckedImage, for: .normal)
         }
         
 //        print("\(colorIndex) \(titleLabel.text) \(isChecked)")
@@ -56,10 +61,11 @@ class ColorTableViewCell: UITableViewCell {
                                           
     @IBAction func checkboxButtonTapped(_ sender: UIButton) {
           if ColorManager.shared.colorElements[colorIndex].markedForDeletion {
-              checkboxButton.setImage(UIImage(named: "emptyCheckBox"), for: .normal)
+              checkboxButton.setImage(ColorTableViewCell.uncheckedImage, for: .normal)
           }
           else{
-              checkboxButton.setImage(UIImage(named: "CheckedBox"), for: .normal)
+//              checkboxButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+              checkboxButton.setImage(ColorTableViewCell.checkedImage, for: .normal)
           }
         ColorManager.shared.colorElements[colorIndex].markedForDeletion.toggle()
         ColorTableViewCell.tableView?.updateTrashButtonState()
