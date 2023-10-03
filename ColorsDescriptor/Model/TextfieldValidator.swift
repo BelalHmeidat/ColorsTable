@@ -19,10 +19,10 @@ class Validator {
     }
     
     func isColorElementValid(_ value: ColorElement) -> String? {
-        print(value.color)
+        print(value.value)
         for color in ColorManager.shared.colorElements {
-            print(color.color)
-            if value.color == color.color{
+            print(color.value)
+            if value.value == color.value{
                 return "Color already exits in the table"
             }
         }

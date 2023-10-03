@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ColorsViewController: UIViewController {
     // MARK: - Outlets
@@ -17,6 +18,7 @@ class ColorsViewController: UIViewController {
     @IBOutlet weak var trashColorButton: UIBarButtonItem!
     
     static var globalTableView : ColorsViewController?
+    var container: NSPersistentContainer!
   
     
     //MARK: constants
@@ -38,6 +40,7 @@ class ColorsViewController: UIViewController {
         ColorsViewController.globalTableView = self
         setupView()
         super.viewDidLoad()
+//        ColorManager.shared.saveColorList()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
@@ -47,10 +50,23 @@ class ColorsViewController: UIViewController {
         }
     }
     
+    // Function to animate the toolbar sliding up or down
+    func toggleToolbarVisibility() {
+        let toolbarHeight = self.toolbar.frame.size.height
+        let yOffset: CGFloat = toolbar.isHidden ? -toolbarHeight : toolbarHeight
+
+        UIView.animate(withDuration: 0.5) {
+            self.toolbar.frame = self.toolbar.frame.offsetBy(dx: 0, dy: yOffset)
+        }
+        toolbar.isHidden.toggle()
+//        isToolbarVisible = !isToolbarVisible
+    }
+    
     //MARK: Button Actions
     @IBAction func editButtonAction(_ sender: UIBarButtonItem) {
         tableView.isEditing.toggle()
-        toolbar.isHidden.toggle()
+//        toolbar.isHidden.toggle()
+        toggleToolbarVisibility()
 //        ColorTableViewCell.editingEnabled.toggle()
         if (tableView.isEditing == true){
             editButton.title = "Done"
@@ -121,8 +137,8 @@ extension ColorsViewController : UITableViewDelegate, UITableViewDataSource {
     /// Action to be performed when a table cell is clicked
     /// Sets the bottom view backgroud color to the color of the cell and shows a description of that color
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        colorDetailsView.backgroundColor =  UIColor(value: ColorManager.shared.getColorElements()[indexPath.row].color)
-        descriptionLb.text =  ColorManager.shared.getColorElements()[indexPath.row].description
+        colorDetailsView.backgroundColor =  UIColor(value: Int(ColorManager.shared.getColorElements()[indexPath.row].value))
+        descriptionLb.text =  ColorManager.shared.getColorElements()[indexPath.row].desc
     }
 }
 

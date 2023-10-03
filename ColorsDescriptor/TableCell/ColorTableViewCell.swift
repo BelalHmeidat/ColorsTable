@@ -38,7 +38,7 @@ class ColorTableViewCell: UITableViewCell {
     /// - Parameter color: ColorElement object that has color details to be displayed in the cell as label and background color
     func setup(with color: ColorElement, index: Int, editing: Bool){
 //        self.setEditing(editing, animated: true)
-        let bgColor : Int = color.color
+        let bgColor : Int = Int(color.value)
         titleLabel.text = color.name
         self.backgroundColor = UIColor(value: bgColor)
         titleLabel.textColor = .white

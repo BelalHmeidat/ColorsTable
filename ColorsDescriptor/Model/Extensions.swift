@@ -19,4 +19,25 @@ extension UIColor {
         }
 }
 
+extension UIColor {
+    func convertToValue()->Int{
+        var red: CGFloat = 0.0
+        var green: CGFloat = 0.0
+        var blue: CGFloat = 0.0
+        var alpha: CGFloat = 0.0
+        self.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        
+        // Converting the RGBA components to an integer value
+        let redInt = Int(red * 255)
+        let greenInt = Int(green * 255)
+        let blueInt = Int(blue * 255)
+        let alphaInt = Int(alpha * 255)
+        
+        // Comibining the components into a single integer value
+        let colorValue = (alphaInt << 24) | (redInt << 16) | (greenInt << 8) | blueInt
+        
+        return colorValue
+    }
+}
+
 

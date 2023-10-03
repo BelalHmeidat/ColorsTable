@@ -10,6 +10,9 @@
 		1D4D30F12AC3A27900D55789 /* TextfieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4D30F02AC3A27900D55789 /* TextfieldValidator.swift */; };
 		1D4F1E502ABC37CF008F3FD2 /* AddColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4F1E4F2ABC37CF008F3FD2 /* AddColorViewController.swift */; };
 		1D72C5282ABB0E8E009F67CD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72C5272ABB0E8E009F67CD /* Extensions.swift */; };
+		1D90B4422ACB478400E29E09 /* ColorsListData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1D90B4402ACB478400E29E09 /* ColorsListData.xcdatamodeld */; };
+		1D90B4452ACB487100E29E09 /* ColorElement+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D90B4432ACB487100E29E09 /* ColorElement+CoreDataClass.swift */; };
+		1D90B4462ACB487100E29E09 /* ColorElement+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D90B4442ACB487100E29E09 /* ColorElement+CoreDataProperties.swift */; };
 		1D95DC1A2AA08FDA0008444D /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D95DC192AA08FDA0008444D /* ColorTableViewCell.swift */; };
 		1D95DC1C2AA08FE40008444D /* ColorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D95DC1B2AA08FE40008444D /* ColorTableViewCell.xib */; };
 		1DA484C32ABC67A300A224E5 /* ColorSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA484C22ABC67A300A224E5 /* ColorSelectorViewController.swift */; };
@@ -29,6 +32,9 @@
 		1D4D30F02AC3A27900D55789 /* TextfieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldValidator.swift; sourceTree = "<group>"; };
 		1D4F1E4F2ABC37CF008F3FD2 /* AddColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddColorViewController.swift; sourceTree = "<group>"; };
 		1D72C5272ABB0E8E009F67CD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1D90B4412ACB478400E29E09 /* ColorsListData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ColorsListData.xcdatamodel; sourceTree = "<group>"; };
+		1D90B4432ACB487100E29E09 /* ColorElement+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorElement+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1D90B4442ACB487100E29E09 /* ColorElement+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorElement+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1D95DC192AA08FDA0008444D /* ColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
 		1D95DC1B2AA08FE40008444D /* ColorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorTableViewCell.xib; sourceTree = "<group>"; };
 		1DA484C22ABC67A300A224E5 /* ColorSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectorViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +107,7 @@
 				1DFF94F72A960DD800391FBE /* ViewControllers */,
 				1DFF94E62A96055100391FBE /* Assets.xcassets */,
 				1DFF94EB2A96055200391FBE /* Info.plist */,
+				1D90B4402ACB478400E29E09 /* ColorsListData.xcdatamodeld */,
 				1DFF94F82A960DE600391FBE /* Model */,
 			);
 			path = ColorsDescriptor;
@@ -137,6 +144,8 @@
 		1DFF94F82A960DE600391FBE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1D90B4432ACB487100E29E09 /* ColorElement+CoreDataClass.swift */,
+				1D90B4442ACB487100E29E09 /* ColorElement+CoreDataProperties.swift */,
 				1DB8C6A02AAE035400A730A2 /* ColorManager.swift */,
 				1DFF94F32A96093B00391FBE /* ColorElement.swift */,
 				1D72C5272ABB0E8E009F67CD /* Extensions.swift */,
@@ -220,11 +229,14 @@
 			files = (
 				1D95DC1A2AA08FDA0008444D /* ColorTableViewCell.swift in Sources */,
 				1DA484C32ABC67A300A224E5 /* ColorSelectorViewController.swift in Sources */,
+				1D90B4462ACB487100E29E09 /* ColorElement+CoreDataProperties.swift in Sources */,
 				1DFF94F42A96093C00391FBE /* ColorElement.swift in Sources */,
 				1DD3645D2AB8933800463759 /* ColorsToolBar.swift in Sources */,
 				1D72C5282ABB0E8E009F67CD /* Extensions.swift in Sources */,
+				1D90B4452ACB487100E29E09 /* ColorElement+CoreDataClass.swift in Sources */,
 				1D4F1E502ABC37CF008F3FD2 /* AddColorViewController.swift in Sources */,
 				1D4D30F12AC3A27900D55789 /* TextfieldValidator.swift in Sources */,
+				1D90B4422ACB478400E29E09 /* ColorsListData.xcdatamodeld in Sources */,
 				1DFF94DE2A96055100391FBE /* AppDelegate.swift in Sources */,
 				1DB8C6A12AAE035400A730A2 /* ColorManager.swift in Sources */,
 				1DFF94F22A96068700391FBE /* ColorsViewController.swift in Sources */,
@@ -446,6 +458,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1D90B4402ACB478400E29E09 /* ColorsListData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1D90B4412ACB478400E29E09 /* ColorsListData.xcdatamodel */,
+			);
+			currentVersion = 1D90B4412ACB478400E29E09 /* ColorsListData.xcdatamodel */;
+			path = ColorsListData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1DFF94D22A96055100391FBE /* Project object */;
 }

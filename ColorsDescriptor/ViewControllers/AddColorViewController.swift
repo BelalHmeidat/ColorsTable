@@ -46,7 +46,7 @@ class AddColorViewController: UIViewController, UIColorPickerViewControllerDeleg
     @IBAction func addColorPressed(_ sender: UIButton) {
         colorTitle = colorTitleTextField.text!
         colorDesc = colorDescTextView.text!
-        let newColorElement = ColorElement(color: selectedColor ?? chooseColorBt.tintColor, name: colorTitle!, description: colorDesc!)
+        let newColorElement = ColorElement(color: selectedColor ?? chooseColorBt.tintColor, name: colorTitle!, description: colorDesc!, context: ColorManager.context)
         if Validator().isColorTitleValid(colorTitle!) != nil {
             let alert = UIAlertController(title: "Error", message: Validator().isColorTitleValid(colorTitle!), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -67,7 +67,7 @@ class AddColorViewController: UIViewController, UIColorPickerViewControllerDeleg
         }
 
         ColorManager.shared.colorElements.append(newColorElement)
-        ColorManager.shared.setColorElements()
+//        ColorManager.shared.saveColorList()
         self.dismiss(animated: true, completion: {self.delegate?.actionRequiresReloadPerformed()}) //closing view controller
 //        delegate?.actionRequiresReloadPerformed()
     }

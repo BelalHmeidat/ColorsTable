@@ -6,16 +6,46 @@
 //
 
 import UIKit
+import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "ColorsListData")
+        container.loadPersistentStores(completionHandler: {(storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }})
+        return container
+    }()
 
-
+//    var window : UIWindow? = UIWindow(frame: UIScreen.main.bounds)
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
-    }
+//           if let rootVC = window?.rootViewController as? ColorsViewController {
+//               rootVC.container = persistentContainer
+//               print("there")
+//           }
+//        else {
+//            let rootVC = ColorsViewController()
+//            rootVC.container = persistentContainer
+//            window?.rootViewController = rootVC
+//            window?.makeKeyAndVisible()
+//            print("there rather")
+//        }
+        
+           return true
+       }
+    
+    func saveContext(backgroundContext: NSManagedObjectContext? = nil) {
+        let context = backgroundContext ?? persistentContainer.viewContext
+            guard context.hasChanges else { return }
+            do {
+                try context.save()
+            } catch let error as NSError {
+                print("Error: \(error), \(error.userInfo)")
+            }
+        }
 
     // MARK: UISceneSession Lifecycle
 
