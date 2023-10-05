@@ -25,54 +25,13 @@ class ColorManager{
 
     //MARK: temp
     //ordered color element list
-    var colorElements = [
-       ColorElement(color: 0x1E4C63,
-                    name: "Deep Teal",
-                    description: "TThis is a detailed description for Deap Teal color", context: context
-                    ),
-            
-        ColorElement(color: 0x102D76,
-                     name: "Catalina Blue",
-                     description: "This is a detailed description for Catalina Blue color", context: context
-                     ),
-            
-        ColorElement(color: 0x180B4F,
-                      name: "Dark Indingo",
-                     description: "This is a detailed description for Dark Indingo color", context: context
-                     ),
-
-        
-        ColorElement(color: 0x3F1156,
-                     name: "Ripe Plum",
-                     description: "This is a detailed description for Ripe Plum color", context: context
-                     ),
-
-        ColorElement(color: 0x4E172A,
-                   name: "Mulberry Wood",
-                     description: "This is a detailed description for Mulberry Wood color", context: context
-                    ),
-
-       ColorElement(color: 0x781F0E,
-                    name: "Kenyan Copper",
-                    description: "This is a detailed description for Kenyan Copper color", context: context
-                   ),
-
-        ColorElement(color:  0x733010,
-                   name: "Chestnut",
-                     description: "This is a detailed description for Chestnut color", context: context
-                    ),
-        ]
+    var colorElements :[ColorElement] = []
     
     //MARK: Intilizer
     /// Rrivate initilizer for singleton.
     /// Retrieves colors list stored in user defaults if exists sets it as the color list to be displayed in the app
     private init() {
-        do {
-            let coreDataList = try ColorManager.context.fetch(ColorElement.fetchRequest())
-            colorElements = coreDataList
-//            colorElements = []
-        }
-        catch{}
+        colorElements = getColorElements()
         if colorElements.count != 0{
             defaultColor = UIColor(value: Int(colorElements[0].value))
         }
@@ -84,7 +43,9 @@ class ColorManager{
     func getColorElements() -> [ColorElement]{
         do{
             colorElements = try ColorManager.context.fetch(ColorElement.fetchRequest())
+            colorElements = orderColors()
             } catch {
+                setColorIndecies() // if first time run then the indecies will be set to the default list
             }
         return self.colorElements
     }
@@ -93,10 +54,12 @@ class ColorManager{
     /// function to save the ordered color list in the user defaults using JSON encoding
     func saveColorList() {
         do {
-//            for color in try ColorManager.context.fetch(ColorElement.fetchRequest()) {
-//                ColorManager.context.delete(color)
+//            for color in colorElements {
+//               try ColorManager.context.delete(color)
 //            }
+            setColorIndecies()
             try ColorManager.context.save()
+            colorElements = getColorElements() //updating the list used to reload the tableview data
         }
         catch{
         }
@@ -112,11 +75,9 @@ class ColorManager{
         for color in colorElements {
             if color.markedForDeletion {
                 ColorManager.context.delete(color) //<<<
-                colorElements.remove(at: colorElements.firstIndex(of: color)!)
             }
         }
-        resetSelectedColors()
-//        saveColorList()
+        saveColorList()
     }
     
     func checkDelete() -> Bool{
@@ -126,6 +87,31 @@ class ColorManager{
             }
         }
         return false
+    }
+    
+    
+    func addElement(color : ColorElement){
+        ColorManager.context.insert(color)
+    }
+    
+    func setColorIndecies(){
+        for (i, color) in colorElements.enumerated(){
+            color.index = i
+            print(color.name, color.index)
+        }
+    }
+    
+    func orderColors() -> [ColorElement]{
+        let list =  colorElements.sorted{$0.index < $1.index}
+        for color in colorElements {
+            print(color.name, color.index)
+        }
+        return list
+    }
+    func moveElement(_ sourceIndexPath: IndexPath, _ destinationIndexPath: IndexPath) {
+        let sourceObjectHolder = ColorManager.shared.colorElements[sourceIndexPath.row]
+        ColorManager.shared.colorElements.remove(at: sourceIndexPath.row)
+        ColorManager.shared.colorElements.insert(sourceObjectHolder, at: destinationIndexPath.row)
     }
 }
 

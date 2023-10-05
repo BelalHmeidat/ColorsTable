@@ -27,6 +27,7 @@ public class ColorElement: NSManagedObject {
             self.name = name
             self.desc = description
             self.markedForDeletion = false
+            self.index = -1
         }
     
     convenience init(color: Int, name: String, description: String, context: NSManagedObjectContext) {
@@ -36,5 +37,7 @@ public class ColorElement: NSManagedObject {
             self.name = name
             self.desc = description
             self.markedForDeletion = false
+            self.index = -1
+
         }
 }

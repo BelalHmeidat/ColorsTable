@@ -38,9 +38,6 @@ class AddColorViewController: UIViewController, UIColorPickerViewControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBorders()
-        
-
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func addColorPressed(_ sender: UIButton) {
@@ -65,11 +62,9 @@ class AddColorViewController: UIViewController, UIColorPickerViewControllerDeleg
             self.present(alert,animated: true)
             return
         }
-
-        ColorManager.shared.colorElements.append(newColorElement)
-//        ColorManager.shared.saveColorList()
+        ColorManager.shared.addElement(color: newColorElement)
+        ColorManager.shared.saveColorList()
         self.dismiss(animated: true, completion: {self.delegate?.actionRequiresReloadPerformed()}) //closing view controller
-//        delegate?.actionRequiresReloadPerformed()
     }
     
     @IBAction func colorButtonPressed(_ sender: UIButton) {

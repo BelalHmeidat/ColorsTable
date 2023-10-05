@@ -37,7 +37,6 @@ class ColorTableViewCell: UITableViewCell {
     /// sets up the cell's background color and the label inside depending the color element it takes as parameter
     /// - Parameter color: ColorElement object that has color details to be displayed in the cell as label and background color
     func setup(with color: ColorElement, index: Int, editing: Bool){
-//        self.setEditing(editing, animated: true)
         let bgColor : Int = Int(color.value)
         titleLabel.text = color.name
         self.backgroundColor = UIColor(value: bgColor)
@@ -49,14 +48,11 @@ class ColorTableViewCell: UITableViewCell {
         }
         // checking if the cell is checked here is neccessary becuase of the dequeable property of the cell
         else if ColorManager.shared.colorElements[colorIndex].markedForDeletion {
-//            checkboxButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
             checkboxButton.setImage(ColorTableViewCell.checkedImage, for: .normal)
         }
         else {
             checkboxButton.setImage(ColorTableViewCell.uncheckedImage, for: .normal)
         }
-        
-//        print("\(colorIndex) \(titleLabel.text) \(isChecked)")
     }
                                           
     @IBAction func checkboxButtonTapped(_ sender: UIButton) {
@@ -64,15 +60,10 @@ class ColorTableViewCell: UITableViewCell {
               checkboxButton.setImage(ColorTableViewCell.uncheckedImage, for: .normal)
           }
           else{
-//              checkboxButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
               checkboxButton.setImage(ColorTableViewCell.checkedImage, for: .normal)
           }
         ColorManager.shared.colorElements[colorIndex].markedForDeletion.toggle()
         ColorTableViewCell.tableView?.updateTrashButtonState()
-        print("\(colorIndex) \(ColorManager.shared.colorElements[colorIndex].name)")
-        for color in ColorManager.shared.colorElements{
-            print(color.name, color.markedForDeletion)
-        }
     }
     
     /// Changes the color of the reorder control handle to white to make it more visible

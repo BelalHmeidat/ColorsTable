@@ -20,6 +20,7 @@ extension ColorElement {
     @NSManaged public var name: String?
     @NSManaged public var desc: String?
     @NSManaged public var markedForDeletion : Bool
+    @NSManaged public var index : Int
 
 }
 
