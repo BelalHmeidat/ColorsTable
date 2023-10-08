@@ -15,17 +15,20 @@ class ColorTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet weak var checkboxButton: UIButton!
     
-    static let checkedImage : UIImage = UIImage(systemName: "checkmark.circle.fill")!.withTintColor(.gray, renderingMode: .alwaysOriginal)
-    static let uncheckedImage : UIImage = UIImage(systemName: "circle")!.withTintColor(.gray, renderingMode: .alwaysOriginal)
-    
+
     
     //MARK: static
     static var selectedColorsIndecies : [Int] = []
+    //images used for cell editing
+    static let checkedImage : UIImage = UIImage(systemName: "checkmark.circle.fill")!.withTintColor(.white, renderingMode: .alwaysOriginal)
+    static let uncheckedImage : UIImage = UIImage(systemName: "circle")!.withTintColor(.white, renderingMode: .alwaysOriginal)
+    //This is used to enable/disable delete in the main view controller
+    static let colorViewController = ColorsViewController.globalTableView
 
     
     //MARK: global vars
-    var colorIndex : Int = -1
-    static let tableView = ColorsViewController.globalTableView
+    var colorIndex : Int = -1 //used to when setting up the cell. It stores the index of the color the cell stores
+
     
     
     //MARK: intitilization
@@ -54,7 +57,9 @@ class ColorTableViewCell: UITableViewCell {
             checkboxButton.setImage(ColorTableViewCell.uncheckedImage, for: .normal)
         }
     }
-                                          
+    
+    //MARK: Outlet functions
+    /// Update the check symbol to the left of the cell each time it's tapped to indicate if the cell is selected or not
     @IBAction func checkboxButtonTapped(_ sender: UIButton) {
           if ColorManager.shared.colorElements[colorIndex].markedForDeletion {
               checkboxButton.setImage(ColorTableViewCell.uncheckedImage, for: .normal)
@@ -62,8 +67,8 @@ class ColorTableViewCell: UITableViewCell {
           else{
               checkboxButton.setImage(ColorTableViewCell.checkedImage, for: .normal)
           }
-        ColorManager.shared.colorElements[colorIndex].markedForDeletion.toggle()
-        ColorTableViewCell.tableView?.updateTrashButtonState()
+        ColorManager.shared.colorElements[colorIndex].markedForDeletion.toggle() //marks the object for deletion
+        ColorTableViewCell.colorViewController?.updateTrashButtonState()
     }
     
     /// Changes the color of the reorder control handle to white to make it more visible

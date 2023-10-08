@@ -37,7 +37,8 @@ class ColorManager{
         }
     }
     
-    //MARK: getters
+    //MARK: Functions
+    
     /// getter for the color elements list
     /// - Returns: the list of colors in ColorManager called colorElements
     func getColorElements() -> [ColorElement]{
@@ -45,41 +46,41 @@ class ColorManager{
             colorElements = try ColorManager.context.fetch(ColorElement.fetchRequest())
             colorElements = orderColors()
             } catch {
-                setColorIndecies() // if first time run then the indecies will be set to the default list
+                setColorIndecies() /// if first time run then the indecies will be set to the default list
             }
         return self.colorElements
     }
-    
-    //MARK: Functions
-    /// function to save the ordered color list in the user defaults using JSON encoding
+    /// Function to save the color list to the core data context with correct order
+    ///  Called after deletion, addition, and edit
     func saveColorList() {
         do {
-//            for color in colorElements {
-//               try ColorManager.context.delete(color)
-//            }
-            setColorIndecies()
+            setColorIndecies() /// updates the index to the index of the list to be fetched later from core data and reordered
             try ColorManager.context.save()
-            colorElements = getColorElements() //updating the list used to reload the tableview data
+            colorElements = getColorElements() /// updating the list used to reload the tableview data
         }
         catch{
         }
     }
-    
+    /// function that clears selected colors for deletion, called after edit is done
     func resetSelectedColors() {
         for color in colorElements {
             color.markedForDeletion = false
         }
     }
     
+    /// Goes over all the colors and deletes the one marked for deletion
     func deleteSelectedColors(){
         for color in colorElements {
             if color.markedForDeletion {
-                ColorManager.context.delete(color) //<<<
+                ColorManager.context.delete(color)
             }
         }
+        /// Saves the color
         saveColorList()
     }
     
+    /// Checks if any of the colors have been marked for deletion to decide whether the trash icon is enabled or not
+    /// - Returns: boolean value that is true if the any of the colors is marked for deletion
     func checkDelete() -> Bool{
         for color in colorElements {
             if color.markedForDeletion {
@@ -90,24 +91,33 @@ class ColorManager{
     }
     
     
+    /// Adds a color object to the data core context
+    /// - Parameter color: the color to be added
     func addElement(color : ColorElement){
         ColorManager.context.insert(color)
     }
     
+    /// goes over the color elements in the stored list of colors and updates each of their index property to match their actual index in the list
+    /// Called when saving to core data context after deletion, addition, or edit
     func setColorIndecies(){
         for (i, color) in colorElements.enumerated(){
             color.index = i
-            print(color.name, color.index)
         }
     }
     
+    /// Orders the colors in the list depending on the color index property for each color
+    /// - Returns: an ordered color list
     func orderColors() -> [ColorElement]{
         let list =  colorElements.sorted{$0.index < $1.index}
-        for color in colorElements {
-            print(color.name, color.index)
-        }
+//        for color in colorElements {
+//            print(color.name, color.index)
+//        }
         return list
     }
+    /// Moves elements corresponding to moving of elements in the colors view controller
+    /// - Parameters:
+    ///   - sourceIndexPath: the old position of the element to be moved in the list
+    ///   - destinationIndexPath: the new position
     func moveElement(_ sourceIndexPath: IndexPath, _ destinationIndexPath: IndexPath) {
         let sourceObjectHolder = ColorManager.shared.colorElements[sourceIndexPath.row]
         ColorManager.shared.colorElements.remove(at: sourceIndexPath.row)

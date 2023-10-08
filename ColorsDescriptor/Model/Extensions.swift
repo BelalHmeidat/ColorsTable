@@ -10,6 +10,8 @@ import UIKit
 
 ///Color int -> UIColor conversion
 extension UIColor {
+    /// initializes a UIColor object from integer color value representing a color
+    /// - Parameter value: the value represnting a color
     convenience init(value: Int) {
             let r = CGFloat((value >> 16) & 0xFF) / 255.0
             let g = CGFloat((value >> 8) & 0xFF) / 255.0
@@ -20,6 +22,8 @@ extension UIColor {
 }
 
 extension UIColor {
+    /// Converts from UI Color object to integer value color used as property of the ColorElement objects
+    /// - Returns: intetger value that represents the color
     func convertToValue()->Int{
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0

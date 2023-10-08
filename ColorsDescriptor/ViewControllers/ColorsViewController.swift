@@ -57,16 +57,17 @@ class ColorsViewController: UIViewController {
         }
         toolbar.isHidden.toggle()
     }
-    
+    /// updates the color so that the removed color detail is never shown afer deletion
     fileprivate func updateSelectedColor() {
-        //updates the color so that the removed color detail is never shown afer deletion
         colorDetailsView.backgroundColor = UIColor(value: Int(ColorManager.shared.colorElements[0].value))
         descriptionLb.text = ColorManager.shared.colorElements[0].desc
     }
     
     //MARK: Button Actions
     @IBAction func editButtonAction(_ sender: UIBarButtonItem) {
+        /// Toggles editing mode for the table
         tableView.isEditing.toggle()
+        /// Enables the toolbar for delete and add while in edit mode
         toggleToolbarVisibility()
         if (tableView.isEditing == true){
             editButton.title = "Done"
@@ -76,16 +77,19 @@ class ColorsViewController: UIViewController {
             ColorManager.shared.saveColorList()
         }
         ColorManager.shared.resetSelectedColors()
+        /// Updates the data in the table
         tableView.reloadData()
     }
-
+    
     @IBAction func deleteButtonAction(_ sender: UIBarItem) {
         ColorManager.shared.deleteSelectedColors()
+        /// Updates the selected color for the detail view to the color of the first element when a color is deleted
         updateSelectedColor()
         tableView.reloadData()
     }
     
     //MARK: functions
+    /// Toggles between enabled trash button (when there are cells selected) and disabled trash button
     func updateTrashButtonState(){
         trashColorButton.isEnabled = ColorManager.shared.checkDelete()
     }
@@ -93,19 +97,21 @@ class ColorsViewController: UIViewController {
 
 // MARK: - Table View Delegate, Data Source, and functionalites
 extension ColorsViewController : UITableViewDelegate, UITableViewDataSource {
-    //setting the number of rows
+    /// setting the number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         ColorManager.shared.colorElements.count
-       //number of rows depend on the number of colors in the colors controller
+       /// number of rows depend on the number of colors in the colors controller
    }
     
     //MARK: cell content configuration
-   //setting contents for each row (cell bg color and cell color name)
+   /// setting contents for each row (cell bg color and cell color name)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? ColorTableViewCell else{
            return UITableViewCell()
        }
+        /// storing the bg color of the cell to be passed when building it
         let color =  ColorManager.shared.colorElements[indexPath.row]
+        /// passing cell build parameters
         cell.setup(with: color, index:indexPath.row, editing: self.tableView.isEditing)
        return cell
         
@@ -117,16 +123,18 @@ extension ColorsViewController : UITableViewDelegate, UITableViewDataSource {
         true
     }
     
-    //reflecting changes to the list of color elements as a result of moving cell    
+    /// reflecting changes to the list of color elements as a result of moving cell
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         ColorManager.shared.moveElement(sourceIndexPath, destinationIndexPath)
         tableView.reloadData()
     }
     
+    /// Disabling editing style becuase non is used
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .none
     }
-
+    
+    /// disabling Identation because it's done manually through ColorTableViewCell
     func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         return false
     }
@@ -140,7 +148,7 @@ extension ColorsViewController : UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-
+/// delegate extension to refresh the table data after adding a color action is performed in the AddColoViewController
 extension ColorsViewController : AddColorViewControllerDelegate {
     func actionRequiresReloadPerformed() {
         tableView.reloadData()
