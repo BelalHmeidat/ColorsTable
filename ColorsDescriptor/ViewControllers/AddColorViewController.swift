@@ -31,8 +31,11 @@ class AddColorViewController: UIViewController, UIColorPickerViewControllerDeleg
         colorDescTextView.layer.borderColor = UIColor.lightGray.cgColor
         colorDescTextView.layer.borderWidth = 1
         colorDescTextView.layer.cornerRadius = 20
-        colorTitleTextField.layer.cornerRadius = 100
+        colorTitleTextField.clipsToBounds = true
+        colorTitleTextField.layer.cornerRadius = 13
+        colorDescTextView.layer.borderWidth = 1
         colorTitleTextField.layer.borderColor = UIColor.lightGray.cgColor
+        colorDescTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
     }
     /// When the color is selected, the color button add view is updated to match the selected color
     func colorPickerViewController(_ viewController: UIColorPickerViewController, didSelect color: UIColor, continuously: Bool) {
@@ -52,26 +55,14 @@ class AddColorViewController: UIViewController, UIColorPickerViewControllerDeleg
     @IBAction func addColorPressed(_ sender: UIButton) {
         colorTitle = colorTitleTextField.text!
         colorDesc = colorDescTextView.text!
-        let newColorElement = ColorElement(color: selectedColor ?? chooseColorBt.tintColor, name: colorTitle!, description: colorDesc!, context: ColorManager.context)
-        if Validator().isColorTitleValid(colorTitle!) != nil {
-            let alert = UIAlertController(title: "Error", message: Validator().isColorTitleValid(colorTitle!), preferredStyle: .alert)
+        let error = Validator.isColorValid(title: colorTitle!, description: colorDesc!, color: selectedColor ?? chooseColorBt.tintColor)
+        if error != nil {
+            let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert,animated: true)
             return
         }
-        else if Validator().isColorElementValid(newColorElement) != nil{
-            let alert = UIAlertController(title: "Error", message: Validator().isColorElementValid(newColorElement), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert,animated: true)
-            return
-        }
-        else if Validator().isColorTitleValid(colorDesc!) != nil {
-            let alert = UIAlertController(title: "Error", message: Validator().isColorDescriptionValid(colorDesc!), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert,animated: true)
-            return
-        }
-        ColorManager.shared.addElement(color: newColorElement)
+        ColorElement(color: selectedColor ?? chooseColorBt.tintColor, name: colorTitle!, description: colorDesc!)
         ColorManager.shared.saveColorList()
         self.dismiss(animated: true, completion: {self.delegate?.actionRequiresReloadPerformed()}) //closing view controller
     }

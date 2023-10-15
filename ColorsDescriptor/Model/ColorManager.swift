@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 //Has the color elements ordered list
 class ColorManager{
@@ -17,8 +18,15 @@ class ColorManager{
     //MARK: Constants
     let colorElementsKey = "storedColorElements"
     let defaults = UserDefaults.standard
-    static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+//    static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "ColorsListData")
+        container.loadPersistentStores(completionHandler: {(storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }})
+        return container
+    }()
     //MARK: vars
 //    var selectedColors :IndexSet = []
     var defaultColor : UIColor = .white
@@ -43,7 +51,7 @@ class ColorManager{
     /// - Returns: the list of colors in ColorManager called colorElements
     func getColorElements() -> [ColorElement]{
         do{
-            colorElements = try ColorManager.context.fetch(ColorElement.fetchRequest())
+            colorElements = try persistentContainer.viewContext.fetch(ColorElement.fetchRequest())
             colorElements = orderColors()
             } catch {
                 setColorIndecies() /// if first time run then the indecies will be set to the default list
@@ -55,7 +63,7 @@ class ColorManager{
     func saveColorList() {
         do {
             setColorIndecies() /// updates the index to the index of the list to be fetched later from core data and reordered
-            try ColorManager.context.save()
+            try persistentContainer.viewContext.save()
             colorElements = getColorElements() /// updating the list used to reload the tableview data
         }
         catch{
@@ -72,7 +80,7 @@ class ColorManager{
     func deleteSelectedColors(){
         for color in colorElements {
             if color.markedForDeletion {
-                ColorManager.context.delete(color)
+                persistentContainer.viewContext.delete(color)
             }
         }
         /// Saves the color
@@ -93,9 +101,9 @@ class ColorManager{
     
     /// Adds a color object to the data core context
     /// - Parameter color: the color to be added
-    func addElement(color : ColorElement){
-        ColorManager.context.insert(color)
-    }
+//    func addElement(color : ColorElement){
+//        persistentContainer.viewContext.insert(color)
+//    }
     
     /// goes over the color elements in the stored list of colors and updates each of their index property to match their actual index in the list
     /// Called when saving to core data context after deletion, addition, or edit

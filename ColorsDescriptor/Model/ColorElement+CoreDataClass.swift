@@ -20,9 +20,9 @@ public class ColorElement: NSManagedObject {
     ///   - name: the name of the color in the list
     ///   - description: the description of the color to be viewed in the detail view
     ///   - context: the context the color will be saved to in core data
-    convenience init(color: UIColor, name: String, description: String, context: NSManagedObjectContext) {
-            let entity = NSEntityDescription.entity(forEntityName: "ColorElement", in: context)!
-            self.init(entity: entity, insertInto: context)
+    convenience init(color: UIColor, name: String, description: String) {
+        let entity = NSEntityDescription.entity(forEntityName: "ColorElement", in: ColorManager.shared.persistentContainer.viewContext)!
+        self.init(entity: entity, insertInto: ColorManager.shared.persistentContainer.viewContext)
         self.value = Int64(color.convertToValue())
             self.name = name
             self.desc = description
@@ -31,9 +31,9 @@ public class ColorElement: NSManagedObject {
         }
     /// Constructor from int value when adding from code
     /// See constructor above
-    convenience init(color: Int, name: String, description: String, context: NSManagedObjectContext) {
-            let entity = NSEntityDescription.entity(forEntityName: "ColorElement", in: context)!
-            self.init(entity: entity, insertInto: context)
+    convenience init(color: Int, name: String, description: String) {
+            let entity = NSEntityDescription.entity(forEntityName: "ColorElement", in: ColorManager.shared.persistentContainer.viewContext)!
+            self.init(entity: entity, insertInto: ColorManager.shared.persistentContainer.viewContext)
         self.value = Int64(color)
             self.name = name
             self.desc = description

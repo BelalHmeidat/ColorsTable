@@ -18,8 +18,15 @@ class ColorsViewController: UIViewController {
     @IBOutlet weak var trashColorButton: UIBarButtonItem!
     
     static var globalTableView : ColorsViewController?
-    var container: NSPersistentContainer!
-  
+//    var container: NSPersistentContainer!
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "ColorsListData")
+        container.loadPersistentStores(completionHandler: {(storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }})
+        return container
+    }()
     
     //MARK: constants
     private let cellIdentifier = "ColorTableViewCell"
@@ -86,6 +93,7 @@ class ColorsViewController: UIViewController {
         /// Updates the selected color for the detail view to the color of the first element when a color is deleted
         updateSelectedColor()
         tableView.reloadData()
+        updateTrashButtonState()
     }
     
     //MARK: functions
