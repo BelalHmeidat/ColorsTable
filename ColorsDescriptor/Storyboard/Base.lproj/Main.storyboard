@@ -69,7 +69,7 @@
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C7c-sm-rra">
-                                <rect key="frame" x="0.0" y="793" width="393" height="50"/>
+                                <rect key="frame" x="0.0" y="852" width="393" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="z7f-8L-Lz7"/>
                                 </constraints>
@@ -100,7 +100,7 @@
                             <constraint firstItem="C7c-sm-rra" firstAttribute="trailing" secondItem="Ndb-Bt-mzU" secondAttribute="trailing" id="LbM-zw-SZH"/>
                             <constraint firstItem="Avd-nD-HBI" firstAttribute="height" secondItem="ssS-QL-Oc0" secondAttribute="height" multiplier="0.4" id="NxL-rL-2Ec"/>
                             <constraint firstItem="Ndb-Bt-mzU" firstAttribute="top" secondItem="Avd-nD-HBI" secondAttribute="top" id="Pnq-Jg-dQs"/>
-                            <constraint firstItem="Ndb-Bt-mzU" firstAttribute="bottom" secondItem="C7c-sm-rra" secondAttribute="bottom" constant="-25" id="emN-Gf-UEV"/>
+                            <constraint firstAttribute="bottom" secondItem="C7c-sm-rra" secondAttribute="bottom" constant="-50" id="emN-Gf-UEV"/>
                             <constraint firstAttribute="trailing" secondItem="bFp-gW-5Nn" secondAttribute="trailing" id="epe-Ga-iaf"/>
                             <constraint firstItem="C7c-sm-rra" firstAttribute="leading" secondItem="Ndb-Bt-mzU" secondAttribute="leading" id="g5L-qM-Goh"/>
                             <constraint firstItem="bFp-gW-5Nn" firstAttribute="top" secondItem="Ndb-Bt-mzU" secondAttribute="top" id="hug-GC-v5P"/>
@@ -194,7 +194,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField toolTip="Enter the color name here" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fnW-bW-foJ">
+                                    <textField toolTip="Enter the color name here" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fnW-bW-foJ">
                                         <rect key="frame" x="0.0" y="40" width="343" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="4si-Uu-5WU"/>
