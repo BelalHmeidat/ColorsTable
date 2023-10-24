@@ -84,5 +84,85 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F1E35B6C-1B38-4D0C-AD62-5DCF894DD1A8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ColorsDescriptor/ViewControllers/ColorsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "updateTrashButtonState()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F1E35B6C-1B38-4D0C-AD62-5DCF894DD1A8 - 2520cab5ea6125bf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ColorsDescriptor.ColorsViewController.updateTrashButtonState() -&gt; ()"
+                  moduleName = "ColorsDescriptor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/belal/Projects/Swift/ColorsDescriptor/ColorsDescriptor/ViewControllers/ColorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "F1E35B6C-1B38-4D0C-AD62-5DCF894DD1A8 - 2520cab5ea612660"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ColorsDescriptor.ColorsViewController.updateTrashButtonState() -&gt; ()"
+                  moduleName = "ColorsDescriptor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/belal/Projects/Swift/ColorsDescriptor/ColorsDescriptor/ViewControllers/ColorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "91315DBA-A58B-4D2A-B86B-CCB8680F4ACB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ColorsDescriptor/TableCell/ColorTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "checkboxButtonTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "32EB950D-4561-4A76-ACDC-0949489D615B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ColorsDescriptor/Extenstion/TrashButtonDelegateExtension.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

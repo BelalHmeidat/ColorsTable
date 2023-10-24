@@ -74,6 +74,7 @@ class ColorsViewController: UIViewController {
         else {
             editButton.title = "Edit"
             ColorManager.shared.saveColorList()
+            trashColorButton.isEnabled = false
         }
         ColorManager.shared.resetSelectedColors()
         /// Updates the data in the table
