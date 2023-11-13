@@ -201,6 +201,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" enablesReturnKeyAutomatically="YES" smartInsertDeleteType="yes" smartQuotesType="no"/>
+                                        <connections>
+                                            <action selector="textfieldPrimaryAction:" destination="5bL-Ik-wJo" eventType="primaryActionTriggered" id="spl-6Q-hDP"/>
+                                        </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LzS-n0-gaB">
                                         <rect key="frame" x="0.0" y="95" width="343" height="30"/>

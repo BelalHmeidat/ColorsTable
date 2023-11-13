@@ -25,6 +25,7 @@ extension ColorsViewController : UITableViewDelegate, UITableViewDataSource {
        }
         /// storing the bg color of the cell to be passed when building it
         let color =  ColorManager.shared.colorElements[indexPath.row]
+        cell.delegate = self
         /// passing cell build parameters
         cell.setup(with: color, index:indexPath.row, editing: self.tableView.isEditing)
        return cell

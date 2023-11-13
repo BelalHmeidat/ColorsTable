@@ -8,8 +8,9 @@
 import Foundation
 import UIKit
 
-protocol TrashButtonAccessDelegate : AnyObject {
-    func updateTrashButton()
+protocol ColorTableCellDelegate : AnyObject {
+    func updateTrashButton(index : Int) -> Bool
+    func isMarkedForDeletion(index: Int) -> Bool
 }
 
 class ColorTableViewCell: UITableViewCell {
@@ -18,12 +19,7 @@ class ColorTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet weak var checkboxButton: UIButton!
     
-    static weak private var delegate : TrashButtonAccessDelegate?
-    
-
-    
-    //MARK: static
-    static var selectedColorsIndecies : [Int] = []
+    weak var delegate: ColorTableCellDelegate?
     
     //MARK: global vars
     var colorIndex : Int = -1 //used to when setting up the cell. It stores the index of the color the cell stores
@@ -50,25 +46,19 @@ class ColorTableViewCell: UITableViewCell {
         }
         // checking if the cell is checked here is neccessary becuase of the dequeable property of the cell
         else {
-            updateImage(reverse: true)
+            updateImage(cellSelected: delegate!.isMarkedForDeletion(index: colorIndex))
         }
     }
     
     /// Changes between checked and unchecked image
-    /// - Parameter reverse: reverses the action of the function
-    private func updateImage(reverse : Bool) {
-        var isSelected = ColorManager.shared.colorElements[colorIndex].markedForDeletion 
-        if !reverse {
-            isSelected = !isSelected
-        }
-        checkboxButton.setImage(UIImage(systemName: isSelected ? "checkmark.circle.fill" : "circle")!.withTintColor(.white, renderingMode:.alwaysOriginal), for: .normal)
+    private func updateImage(cellSelected : Bool) {
+        checkboxButton.setImage(UIImage(systemName: cellSelected ? "checkmark.circle.fill" : "circle")!.withTintColor(.white, renderingMode:.alwaysOriginal), for: .normal)
     }
     //MARK: Outlet functions
     /// Update the check symbol to the left of the cell each time it's tapped to indicate if the cell is selected or not
     @IBAction func checkboxButtonTapped(_ sender: UIButton) {
-        updateImage(reverse: false)
-        ColorManager.shared.colorElements[colorIndex].markedForDeletion.toggle() //marks the object for deletion
-        ColorTableViewCell.delegate?.updateTrashButton()
+        let cellSelected: Bool = (self.delegate!.updateTrashButton(index: colorIndex))
+        updateImage(cellSelected: cellSelected)
     }
     
     /// Changes the color of the reorder control handle to white to make it more visible

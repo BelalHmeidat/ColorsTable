@@ -22,7 +22,7 @@ class AddColorViewController: UIViewController, UIColorPickerViewControllerDeleg
     weak var delegate : (AddColorViewControllerDelegate)?
     
     //MARK: Function
-    fileprivate func addPaddingToTextfield() {
+    private func addPaddingToTextfield() {
         let paddingView = UIView(frame: CGRectMake(0, 0, 15, self.colorTitleTextField.frame.height))
         colorTitleTextField.leftView = paddingView
         colorTitleTextField.leftViewMode = UITextField.ViewMode.always
@@ -55,14 +55,13 @@ class AddColorViewController: UIViewController, UIColorPickerViewControllerDeleg
         super.viewDidLoad()
         setupBorders()
     }
-    
-    //MARK: Outlet functions
     private func showAlert(_ error: String?) {
         let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert,animated: true)
     }
     
+    //MARK: Outlet functions
     /// validates the input information of the color to be added and adds it to the list of color then saves it to the context of data core
     /// Closes of the view and returns back to the colors view
     @IBAction private func addColorPressed(_ sender: UIButton) {
@@ -92,5 +91,8 @@ class AddColorViewController: UIViewController, UIColorPickerViewControllerDeleg
     /// Dismisses the add color view and returns to the colors view
     @IBAction private func cancelButtonPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func textfieldPrimaryAction(_ sender: UITextField) {
+        colorTitleTextField.endEditing(true)
     }
 }

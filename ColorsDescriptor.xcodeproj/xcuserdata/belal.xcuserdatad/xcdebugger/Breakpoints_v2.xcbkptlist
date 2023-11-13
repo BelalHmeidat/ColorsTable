@@ -88,7 +88,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "F1E35B6C-1B38-4D0C-AD62-5DCF894DD1A8"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ColorsDescriptor/ViewControllers/ColorsViewController.swift"
@@ -135,33 +135,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "91315DBA-A58B-4D2A-B86B-CCB8680F4ACB"
+            uuid = "8BC8EB22-C1C5-4E71-ABAE-301F0D469FFA"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ColorsDescriptor/TableCell/ColorTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "checkboxButtonTapped(_:)"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "updateImage(cellSelected:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "32EB950D-4561-4A76-ACDC-0949489D615B"
+            uuid = "54429663-1B5D-4B72-B8E9-BF473C729C17"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ColorsDescriptor/Extenstion/TrashButtonDelegateExtension.swift"
+            filePath = "ColorsDescriptor/ViewControllers/AddColorViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "openColorPickerView()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
